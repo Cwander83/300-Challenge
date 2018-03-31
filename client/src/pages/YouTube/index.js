@@ -1,6 +1,6 @@
 import React, {Component} from "react";
 import "./style.css";
-import {Jumbotron} from "react-bootstrap";
+import {Jumbotron} from "react-bootstrap"
 import YouTubeAPI from "../../utils/YouTubeAPI";
 import MediaBox from "../../components/Media";
 

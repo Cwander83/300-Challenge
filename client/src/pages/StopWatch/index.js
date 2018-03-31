@@ -83,14 +83,6 @@ class Stopwatch extends Component {
                         .handleStopClick
                         .bind(this)}>stop</Button>)}
 
-                <ul className="stopwatch-times">
-                    {this
-                        .state
-                        .recordTime
-                        .map((time) => <li className="stopwatch-record">
-                            <strong>Recorded Time</strong>: {this.formatSeconds(time)}</li>)
-}
-                </ul>
             </div>
         );
     }

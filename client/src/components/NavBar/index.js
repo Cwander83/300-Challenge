@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from "react-router-dom";
 import {Navbar, Nav, NavItem} from 'react-bootstrap';
 
 
@@ -12,21 +13,27 @@ const NavBar = (props) => (
     </Navbar.Header>
     <Navbar.Collapse>
       <Nav pullRight>
-      <NavItem eventKey={1} >
-      Home
-        </NavItem>
-        <NavItem eventKey={2} href="#">
-          Profile
-        </NavItem>
-        <NavItem eventKey={3} href="#">
-        Videos
-        </NavItem>
-        <NavItem eventKey={4} href="#">
-          Stopwatch
-        </NavItem>
-        <NavItem eventKey={5} href="#">
-          Logout
-        </NavItem>
+      
+					{props.isAuthenticated &&
+						(<NavItem className="NavItem">
+							<Link className="NavItem" to="/Home">Home </Link>
+						</NavItem>)
+					}
+				
+        {props.isAuthenticated &&
+					(<NavItem className="NavItem">
+						<Link className="NavItem" to="/YoutubePage">Videos</Link>
+          </NavItem>)
+        }
+					
+				
+				{props.isAuthenticated && 
+					(<NavItem className = "NavItem" onClick = {this.HandleLogout}>
+						<Link className="NavItem" to="/Logout">Logout</Link>
+          </NavItem> 
+          )
+				}
+        
       </Nav>
     </Navbar.Collapse>
   </Navbar>
