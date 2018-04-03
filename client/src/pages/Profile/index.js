@@ -1,5 +1,6 @@
 import React from "react";
 import {Jumbotron} from "react-bootstrap";
+//import Table from "../../components/Table"
 
 const Profile = (props) => (
 
@@ -22,6 +23,8 @@ const Profile = (props) => (
 
             <h2>Location</h2>
             <h3>{props.auth.state}, {props.auth.country}</h3>
+
+            {/* <Table {...props}/> */}
             
 
         </Jumbotron>

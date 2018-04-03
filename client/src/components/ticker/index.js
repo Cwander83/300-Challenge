@@ -4,7 +4,7 @@ import "./style.css"
 
 const ticker = () => {
     return ( 
-        <Marquee>Content goes here </Marquee>
+        <Marquee><div><h1>Content goes here</h1></div> </Marquee>
     )
   }
 

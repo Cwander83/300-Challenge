@@ -21,6 +21,7 @@ class App extends Component {
     email: "",
     state: "",
     country: "",
+    times:[],
     auth: {
       userId: "",
       username: "",
@@ -29,6 +30,7 @@ class App extends Component {
       email: "",
       state: "",
       country: "",
+      times:[],
       isAuthenticated: false
     }
   };
@@ -45,7 +47,8 @@ class App extends Component {
           lastname,
           email,
           state,
-          country
+          country,
+          times
         } = result.data
         this.setState({
           auth: {
@@ -56,7 +59,8 @@ class App extends Component {
             lastname,
             email,
             state,
-            country
+            country,
+            times
           }
         });
       });
@@ -79,7 +83,8 @@ class App extends Component {
       firstname: this.state.firstname,
       lastname: this.state.lastname,
       state: this.state.state,
-      country: this.state.country
+      country: this.state.country,
+      times: this.state.times
     };
     this.setState({username: "", password: ""});
     const {name} = event.target;
