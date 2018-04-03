@@ -3,8 +3,8 @@ module.exports = function (passport) {
 	const path = require("path");
 	const router = require('express').Router();
 
-	router.get("/isAuthenticated",function(req,res){
-		if (req.isAuthenticated()){
+	router.get("/isAuthenticated", function (req, res) {
+		if (req.isAuthenticated()) {
 			res.json({
 				userId: req.user._id,
 				username: req.user.username,
@@ -27,10 +27,12 @@ module.exports = function (passport) {
 		}
 	});
 
-	router.post("/signup",function(req,res){
+	router.post("/signup", function (req, res) {
 		const newUser = req.body;
-		User.register(newUser,newUser.password,(err,user)=>{
-			if (err){ return res.json(err.message); }
+		User.register(newUser, newUser.password, (err, user) => {
+			if (err) {
+				return res.json(err.message);
+			}
 			res.json({
 				userId: user._id,
 				username: user.username,
@@ -44,16 +46,21 @@ module.exports = function (passport) {
 		});
 	});
 
-	router.post("/signin",passport.authenticate('local') ,function(req,res){
+	router.post("/signin", passport.authenticate('local'), function (req, res) {
 		// console.log(req.user);
 		res.json({
 			userId: req.user._id,
 			username: req.user.username,
+			email: req.user.email,
+			firstname: req.user.firstname,
+			lastname: req.user.lastname,
+			state: req.user.state,
+			country: req.user.country,
 			isAuthenticated: true
 		});
 	});
 
-	router.get('/logout', function(req, res) {
+	router.get('/logout', function (req, res) {
 		req.logout();
 		res.json();
 	});

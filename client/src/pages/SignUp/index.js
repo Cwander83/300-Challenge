@@ -29,7 +29,12 @@ const SignUp = (props)=> {
 				<ControlLabel>Email</ControlLabel><br/>
 				<FormControl name='email' type='email' value = {props.email} onChange = {props.handleChange} />
 				<br />
-			
+				<ControlLabel>First Name</ControlLabel><br/>
+				<FormControl name='firstname' type='name' value = {props.firstname} onChange = {props.handleChange} />
+				<br />
+				<ControlLabel>Last Name</ControlLabel><br/>
+				<FormControl name='lastname' type='name' value = {props.lastname} onChange = {props.handleChange} />
+				<br />
 				<ControlLabel>Location: State</ControlLabel><br/>
 				<FormControl name='state' type='name' value = {props.state} onChange = {props.handleChange} />
 				<br />

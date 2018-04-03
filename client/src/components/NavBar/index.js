@@ -23,7 +23,11 @@ const NavBar = (props) => (
 							<Link className="NavItem" to="/Profile">Profile</Link>
 						</NavItem>)
 					}
-				
+				  {props.isAuthenticated &&
+					(<NavItem className="NavItem">
+						<Link className="NavItem" to="/StopWatch">StopWatch</Link>
+          </NavItem>)
+        }
         {props.isAuthenticated &&
 					(<NavItem className="NavItem">
 						<Link className="NavItem" to="/YoutubePage">Videos</Link>

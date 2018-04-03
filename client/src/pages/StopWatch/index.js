@@ -63,7 +63,7 @@ class Stopwatch extends Component {
             challenge: false
         }
         stopwatchAPI.updateUserRecord(newRecord);
-        
+
     };
 
     render() {
