@@ -1,22 +1,22 @@
-import React from 'react';
+import React from "react";
 import {Jumbotron} from "react-bootstrap";
-import "./style.css";
-import StopWatch from "../../components/StopWatch";
 
-import Profilecomponent from "../../components/Profilecomponent";
+const Profile = (props) => (
 
-const Profile = (props) => {
+    <div>
+        <Jumbotron className="profileJumbotron">
 
-  return (
+            <h1>Welcome back, {props.auth.username}</h1>
+            <h2>Email</h2>
+            <h3>{props.auth.email}</h3>
 
-    <Jumbotron>
-      
-      <Profilecomponent {...props}/>
-      <StopWatch {...props}/>
-      <h1>hello world</h1>
-    </Jumbotron>
 
-  );
-}
+            <h2>Location</h2>
+            <h3>{props.auth.state}, {props.auth.country}</h3>
+            
 
+        </Jumbotron>
+    </div>
+
+)
 export default Profile;

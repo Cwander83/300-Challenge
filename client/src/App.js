@@ -3,13 +3,12 @@ import './App.css';
 import {BrowserRouter as Router, Route, Redirect} from 'react-router-dom';
 import axios from 'axios';
 import CoverImage from "./components/CoverImage";
-import NavBar from "./components/NavBar"
+import NavBar from "./components/NavBar";
 import SignIn from "./pages/SignIn";
 import SignUp from "./pages/SignUp";
-import Profile from "./pages/Profile";
+import Home from "./pages/Home";
 import YouTubePage from "./pages/YouTube";
-
-
+import Profile from "./pages/Profile";
 
 class App extends Component {
   state = {
@@ -26,12 +25,23 @@ class App extends Component {
     axios
       .get("/auth/isAuthenticated")
       .then((result) => {
-        const {userId, isAuthenticated, username} = result.data
+        const {
+          userId,
+          isAuthenticated,
+          username,
+          email,
+          state,
+          country
+        } = result.data
         this.setState({
           auth: {
             userId,
             isAuthenticated,
-            username
+            username,
+            email,
+
+            state,
+            country
           }
         });
       });
@@ -49,7 +59,11 @@ class App extends Component {
     //call a sign In function
     const newUser = {
       username: this.state.username,
-      password: this.state.password
+      password: this.state.password,
+      email: this.state.email,
+
+      state: this.state.state,
+      country: this.state.country
     };
     this.setState({username: "", password: ""});
     const {name} = event.target;
@@ -96,20 +110,19 @@ class App extends Component {
             exact
             path="/"
             render=
-            {()=> { if(loggedIn) { return <Redirect to = "/Profile" /> } else{ return <SignIn handleChange= {this.handleChange} handleSubmit = {this.handleSubmit} email = {this.state.email} password = {this.state.password} /> } }}/>
+            {()=> { if(loggedIn) { return <Redirect to = "/Home" /> } else{ return <SignIn handleChange= {this.handleChange} handleSubmit = {this.handleSubmit} email = {this.state.email} password = {this.state.password} /> } }}/>
           <Route
             exact
             path="/signup"
             render=
-            {()=> { if(loggedIn) { return <Redirect to = "/Profile" /> } else{ return <SignUp handleChange= {this.handleChange} handleSubmit = {this.handleSubmit} email = {this.state.email} password = {this.state.password} /> } }}/>
+            {()=> { if(loggedIn) { return <Redirect to = "/Home" /> } else{ return <SignUp handleChange= {this.handleChange} handleSubmit = {this.handleSubmit} state = {this.state.state} email = {this.state.email} password = {this.state.password} /> } }}/>
           <Route
             exact
-            path="/Profile"
+            path="/Home"
             render=
-            {()=> { if(!loggedIn) { return <Redirect to = "/" /> } else { return <Profile handleLogout = {this.handleLogout} auth = { this.state.auth }/> } } }/>
-        
-         
-        
+            {()=> { if(!loggedIn) { return <Redirect to = "/" /> } else { return <Home handleLogout = {this.handleLogout} auth = { this.state.auth }/> } } }/>
+
+          <Route exact path="/Profile" render= {()=><Profile auth = {this.state.auth}/>}/>
           <Route exact path="/YouTubePage" render= {()=><YouTubePage/>}/>
         </div>
       </Router>

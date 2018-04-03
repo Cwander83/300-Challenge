@@ -8,13 +8,23 @@ const User = new Schema({
 				type: Schema.Types.ObjectId,
 				ref: "StopWatchTimes"
 		},
-
-		email: String,
-
+		email: {
+			type: String,
+			match: [/.+@.+\..+/, "Please enter a valid e-mail address"]
+		},
 		favoritescene: String,
-		firstname: String,
-		lastname: String,
-		location: String
+		firstName: {
+			type: String,
+			trim: true,
+			
+		},
+		lastName: {
+			type: String,
+			trim: true,
+			
+		},
+		state: String,
+		country: String
 });
 
 // passport-local-mongoose creates a 'username' and some password fields for you

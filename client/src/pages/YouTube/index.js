@@ -3,6 +3,8 @@ import "./style.css";
 import {Jumbotron} from "react-bootstrap"
 import YouTubeAPI from "../../utils/YouTubeAPI";
 import MediaBox from "../../components/Media";
+import "animate.css/animate.min.css";
+import ScrollAnimation from "react-animate-on-scroll";
 
 
 // The ...props means, spread all of the passed props onto this element That way
@@ -42,7 +44,14 @@ class YouTubePage extends Component {
         return (
              <div>
            <Jumbotron >
-           
+               <Jumbotron className="jumboHome">
+           <ScrollAnimation duration={8} animateIn='rubberBand' initallyVisible={true}>
+        <h1>
+          Workout Videos
+        </h1>
+
+      </ScrollAnimation>
+      </Jumbotron>
                 {this.renderVideos()}
                 </Jumbotron>
                 </div>

@@ -26,6 +26,16 @@ const SignUp = (props)=> {
 				<ControlLabel>Password</ControlLabel><br/>
 				<FormControl name='password' type='password' value = {props.password} onChange = {props.handleChange} />
 				<br />
+				<ControlLabel>Email</ControlLabel><br/>
+				<FormControl name='email' type='email' value = {props.email} onChange = {props.handleChange} />
+				<br />
+			
+				<ControlLabel>Location: State</ControlLabel><br/>
+				<FormControl name='state' type='name' value = {props.state} onChange = {props.handleChange} />
+				<br />
+				<ControlLabel>Country</ControlLabel><br/>
+				<FormControl name='country' type='name' value = {props.country} onChange = {props.handleChange} />
+				<br />
 				<button type = 'submit' name = "/auth/signup" onClick = {props.handleSubmit}>Sign Up</button>
 			</FormGroup>
 		</div>

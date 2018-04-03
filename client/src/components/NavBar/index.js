@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from "react-router-dom";
-import {Navbar, Nav, NavItem, Button} from 'react-bootstrap';
+import {Navbar, Nav, NavItem} from 'react-bootstrap';
 
 
 import "./style.css";
@@ -13,7 +13,11 @@ const NavBar = (props) => (
     </Navbar.Header>
     <Navbar.Collapse>
       <Nav pullRight>
-      
+      {props.isAuthenticated &&
+						(<NavItem className="NavItem">
+							<Link className="NavItem" to="/Home">Home</Link>
+						</NavItem>)
+					}
 					{props.isAuthenticated &&
 						(<NavItem className="NavItem">
 							<Link className="NavItem" to="/Profile">Profile</Link>
@@ -27,13 +31,13 @@ const NavBar = (props) => (
         }
 					
 				
-        {props.isAuthenticated && 
+        {/* {props.isAuthenticated && 
         
-					(<Button bsStyle="link"  onClick = {this.HandleLogout}>
+					(<button bsstyle="link"  onClick = {this.HandleLogout}>
 						Logout
-          </Button> 
+          </button> 
           )
-				}
+				} */}
         
       </Nav>
     </Navbar.Collapse>

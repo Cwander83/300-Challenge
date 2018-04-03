@@ -5,7 +5,7 @@ PULL UP
 https://www.youtube.com/embed/WXMKjV11lAk
 
 PUSH UP
-https://www.youtube.com/embed/WXMKjV11lAk
+https://www.youtube.com/embed/XIHO5t_VBPQ
 <iframe width="854" height="480" src="https://www.youtube.com/embed/WXMKjV11lAk" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
 
 

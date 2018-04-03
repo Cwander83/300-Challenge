@@ -1,6 +1,7 @@
 const db = require("../models");
 
 module.exports = {
+    //find all users
     findAllUser: function (req, res) {
         db
             .User
@@ -8,7 +9,7 @@ module.exports = {
             .then(dbUser => res.json(dbUser))
             .catch(err => res.status(422).json(err));
     },
-
+    // find all records from one user
     findUserRecords: function (req, res) {
         db
             .User
@@ -16,10 +17,25 @@ module.exports = {
             .then(dbUser => res.json(dbUser))
             .catch(err => res.status(422).json(err));
     },
+    // update the user's doc
+    // updateUser: function (req, res) {
+    //     db
+    //         .User
+    //         .findByIdAndUpdate(req.params.id, req.body)
+    //         .then(function (dbUser){
+    //             console.log(`dbUser ${dbUser}`)
+    //             console.log(`req.body ${req.body}`)
+    //             res.json(dbUser)
+    //         })
+    //         .catch(function (err) {
+    //             res.json(err);
+    //         });
 
+    // },
+    // update a single user's records
     updateUserRecord: function (req, res) {
         db
-            .StopWatchTime
+            .StopWatchTimes
             .create(req.body)
             .then(function (dbStopWatchTimes) {
                 console.log(`dbstopwatchtimes ${dbStopWatchTimes}`);
@@ -30,7 +46,9 @@ module.exports = {
                         $push: {
                             times: dbStopWatchTimes._id
                         }
-                    }, {new: true});
+                    }, {
+                        new: true
+                    });
             })
             .then(function (dbUser) {
 
@@ -41,7 +59,7 @@ module.exports = {
                 res.json(err);
             });
     },
-
+    // function to find *all records from all users
     findAllRecords: function (req, res) {
         db
             .dbStopWatchTimes
@@ -53,7 +71,7 @@ module.exports = {
                 res.json(err);
             });
     },
-
+    // to populate the times from a user
     populateUser: function (req, res) {
         db
             .User
@@ -67,12 +85,14 @@ module.exports = {
                 res.json(err);
             });
     },
-
+    // to delete a time from a user's record times
     deleteRecord: function (req, res) {
 
         db
             .dbStopWatchTimes
-            .remove({_id: req.params.id})
+            .remove({
+                _id: req.params.id
+            })
             .then(function (dbStopWatchTimes) {
                 res.json(dbStopWatchTimes);
             });
