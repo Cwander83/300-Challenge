@@ -2,17 +2,19 @@ import React, {Component} from "react";
 import {Button} from "react-bootstrap";
 import stopwatchAPI from "../../utils/stopwatch";
 
-class Stopwatch extends Component {
-    userId = this.props.auth.userId;
+export default class Stopwatch extends Component {
 
     constructor(props) {
         super(props);
+
         this.state = {
+
             secondsElapsed: 0,
             recordTime: [],
-            lastClearedIncrementer: null
+            lastClearedIncrementer: 0
         };
-        this.incrementer = null;
+
+        this.incrementer = 0;
     };
 
     formatSeconds = (seconds) => {
@@ -31,46 +33,46 @@ class Stopwatch extends Component {
 
     handleStartClick() {
         this.incrementer = setInterval(() => this.setState({
+
             secondsElapsed: this.state.secondsElapsed + 1
         }), 1000);
+        //console.log(this.props.auth.userId);
     };
 
     handleStopClick() {
         clearInterval(this.incrementer);
-        this.setState({
-            lastClearedIncrementer: this.incrementer,
-            secondsElapsed: 0,
-            recordTime: this
-                .state
-                .recordTime
-                .concat([this.state.secondsElapsed])
-        })
-        this.saveRecord();
+        this.setState({userId: this.props.auth.userId, lastClearedIncrementer: this.incrementer, secondsElapsed: 0, recordTime: this.state.recordTime})
+        //console.log(`this.userId from stop ${this.props.auth.userId}`);
+        const userId = this.props.auth.userId;
+        this.saveRecord(userId);
     };
 
     saveRecord = (userId, time) => {
 
-        userId = this.userId
         time = this.formatSeconds(this.state.secondsElapsed)
 
-        console.log(userId)
-        console.log(this.formatSeconds(this.state.secondsElapsed));
-        console.log(time);
+        // console.log(userId)
+        // console.log(this.formatSeconds(this.state.secondsElapsed));
+        // console.log(time);
 
         const newRecord = {
-            _id: userId,
+
             recordedtime: time,
             challenge: false
         }
-        stopwatchAPI.updateUserRecord(newRecord);
+        stopwatchAPI.updateUserRecord(userId, newRecord);
+        // stopwatchAPI.updateUserRecord(userId,{     recordedtime: time,
+        // challenge: false })
 
     };
 
     render() {
+        //console.log(this.props);
+        const userId = this.props.auth.userId;
         return (
             <div className="stopwatch">
                 <h1 className="stopwatch-timer">{this.formatSeconds(this.state.secondsElapsed)}</h1>
-                <p>{this.props.auth.userId}</p>
+                <p>{userId}</p>
                 {(this.state.secondsElapsed === 0 || this.incrementer === this.state.lastClearedIncrementer
                     ? <Button
                             className="start-btn"
@@ -87,5 +89,3 @@ class Stopwatch extends Component {
         );
     }
 }
-
-export default Stopwatch;

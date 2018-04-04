@@ -20,8 +20,7 @@ class App extends Component {
     lastname: "",
     email: "",
     state: "",
-    country: "",
-    times:[],
+    country:"",
     auth: {
       userId: "",
       username: "",
@@ -30,7 +29,6 @@ class App extends Component {
       email: "",
       state: "",
       country: "",
-      times:[],
       isAuthenticated: false
     }
   };
@@ -47,8 +45,7 @@ class App extends Component {
           lastname,
           email,
           state,
-          country,
-          times
+          country
         } = result.data
         this.setState({
           auth: {
@@ -60,7 +57,6 @@ class App extends Component {
             email,
             state,
             country,
-            times
           }
         });
       });
@@ -84,7 +80,7 @@ class App extends Component {
       lastname: this.state.lastname,
       state: this.state.state,
       country: this.state.country,
-      times: this.state.times
+      
     };
     this.setState({username: "", password: ""});
     const {name} = event.target;
@@ -92,12 +88,21 @@ class App extends Component {
       .post(name, newUser)
       .then((data) => {
         if (data.data.isAuthenticated) {
-          const {userId, isAuthenticated, username} = data.data;
+          const {userId, isAuthenticated, username,firstname,
+            lastname,
+            email,
+            state,
+            country} = data.data;
           this.setState({
             auth: {
               userId,
               isAuthenticated,
-              username
+              username,
+              firstname,
+              lastname,
+              email,
+              state,
+              country,
             }
           });
         }
@@ -144,7 +149,7 @@ class App extends Component {
             render=
             {()=> { if(!loggedIn) { return <Redirect to = "/" /> } else { return <Home handleLogout = {this.handleLogout} auth = { this.state.auth }/> } } }/>
 
-          <Route exact path="/Profile" render= {()=><Profile auth = {this.state.auth}/>}/>
+          <Route exact path="/Profile" render= {()=><Profile auth= {this.state.auth} lastname = {this.state.lastname} firstname = {this.state.firstname} state = {this.state.state} country={this.state.country} email = {this.state.email}/>}/>
           <Route exact path="/StopWatch" render= {()=><StopWatch auth = {this.state.auth}/>}/>
           <Route exact path="/YouTubePage" render= {()=><YouTubePage/>}/>
         </div>

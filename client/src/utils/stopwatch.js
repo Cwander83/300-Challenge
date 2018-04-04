@@ -8,9 +8,9 @@ export default {
   },
 
   // Udates a user's record
-  updateUserRecord: function (userData) {
-     console.log("stopwatch.js:", userData._id);
-    return axios.post("/api/records/" + userData._id, userData);
+  updateUserRecord: function (id,userData) {
+     //console.log("stopwatch.js:", userData._id);
+    return axios.post("/api/records/"+ id, userData);
   },
   populateUser: function (id) {
     return axios.put("/api/records/" + id);

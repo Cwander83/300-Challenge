@@ -33,15 +33,14 @@ const NavBar = (props) => (
 						<Link className="NavItem" to="/YoutubePage">Videos</Link>
           </NavItem>)
         }
+         {props.isAuthenticated &&
+					(<NavItem className="NavItem" onClick = {this.HandleLogout}>
+						<Link className="NavItem" to="/">Logout</Link>
+          </NavItem>)
+        }
 					
 				
-        {/* {props.isAuthenticated && 
-        
-					(<button bsstyle="link"  onClick = {this.HandleLogout}>
-						Logout
-          </button> 
-          )
-				} */}
+   
         
       </Nav>
     </Navbar.Collapse>
