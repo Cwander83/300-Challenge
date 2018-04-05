@@ -49,10 +49,10 @@ export default class Stopwatch extends Component {
 
     saveRecord = (userId, time) => {
 
-        time = this.formatSeconds(this.state.secondsElapsed)
+        time = this.state.secondsElapsed;
 
         // console.log(userId)
-        // console.log(this.formatSeconds(this.state.secondsElapsed));
+         console.log(this.state.secondsElapsed);
         // console.log(time);
 
         const newRecord = {

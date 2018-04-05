@@ -4,7 +4,9 @@ module.exports = function (passport) {
 
 
 	router.use("/videos",require("./YouTubeRoutes.js")(passport));
-	router.use("/records", require("./StopWatchRoutes.js")(passport))
+	router.use("/records", require("./StopWatchRoutes.js")(passport));
+	router.use("/stopwatchtimes", require("./TimesRoutes.js")(passport));
+	
 	
 	
 	return router;

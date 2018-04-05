@@ -62,34 +62,51 @@ module.exports = {
     // function to find *all records from all users
     findAllRecords: function (req, res) {
         db
-            .dbStopWatchTimes
-            .find({})
-            .then(function (dbStopWatchTimes) {
-                res.json(dbStopWatchTimes);
-            })
-            .catch(function (err) {
-                res.json(err);
-            });
+            .StopWatchTimes
+            .find()
+            .sort
+            .then(dbStopWatchTimes => res.json(dbStopWatchTimes))
+            .catch(err => res.status(422).json(err));
     },
+    
+    // findAllRecords: function (req, res) {
+    //     db
+    //     .StopWatchTimes
+    //         .find({})
+    //         .then(function (dbStopWatchTimes) {
+    //             console.log(`dbStopwatchtimes ${dbStopWatchTimes}`);
+    //             res.json(dbStopWatchTimes);
+    //         })
+    //         .catch(function (err) {
+    //             console.log(`err ${err}`);
+    //             res.json(err);
+    //         });
+    // },
     // to populate the times from a user
     populateUser: function (req, res) {
-        db
-            .User
-            .findById(req.params.id)
-            .populate("times")
-            .then(function (dbUser) {
-                res.json(dbUser);
-            })
-            .catch(function (err) {
+        db.User.findOne({username:"tester"}).populate("times").exec(function(err,doc){
+            console.log(doc);
+            console.log(`err ${err}`);
+        })
+        // db
+        //     .User
+        //     .findById(req.params.id)
+        //     .populate("times")
+            
+        //     .then(function (dbUser) {
+        //         console.log(`times: ${dbUser}`);
+        //         res.json(dbUser);
+        //     })
+        //     .catch(function (err) {
 
-                res.json(err);
-            });
+        //         res.json(err);
+        //     });
     },
     // to delete a time from a user's record times
     deleteRecord: function (req, res) {
 
         db
-            .dbStopWatchTimes
+            .StopWatchTimes
             .remove({
                 _id: req.params.id
             })

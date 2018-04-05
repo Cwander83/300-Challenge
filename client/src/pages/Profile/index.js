@@ -1,6 +1,7 @@
 import React from "react";
 import {Jumbotron} from "react-bootstrap";
 //import Table from "../../components/Table"
+//import axios from "axios";
 
 export default class Profile extends React.Component{
 render(){
