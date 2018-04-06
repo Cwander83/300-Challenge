@@ -5,12 +5,12 @@ module.exports = function (passport) {
 
     router
         .route("/:id")
-        .delete(stopwatchcontroller.deleteRecord)
+        .get(stopwatchcontroller.populateUser)
+        .delete(stopwatchcontroller.deleteRecord);
 
     router
         .route("/")
-        .get(stopwatchcontroller.findAllRecords)
-        .get(stopwatchcontroller.populateUser);
+        .get(stopwatchcontroller.findAllRecords);
 
     return router;
 };

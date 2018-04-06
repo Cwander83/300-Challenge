@@ -1,4 +1,4 @@
-import React, {Component} from "react";
+import React from "react";
 import "./style.css";
 import {Jumbotron} from "react-bootstrap"
 import YouTubeAPI from "../../utils/YouTubeAPI";
@@ -9,7 +9,7 @@ import ScrollAnimation from "react-animate-on-scroll";
 
 // The ...props means, spread all of the passed props onto this element That way
 // we don't have to define them all individually
-class YouTubePage extends Component {
+export default class YouTubePage extends React.Component {
     state = {
         videos: [],
         Title: "",
@@ -60,4 +60,4 @@ class YouTubePage extends Component {
     }
 };
 
-export default YouTubePage;
+

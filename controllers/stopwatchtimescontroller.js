@@ -64,7 +64,7 @@ module.exports = {
         db
             .StopWatchTimes
             .find()
-            .sort
+            
             .then(dbStopWatchTimes => res.json(dbStopWatchTimes))
             .catch(err => res.status(422).json(err));
     },
@@ -84,9 +84,10 @@ module.exports = {
     // },
     // to populate the times from a user
     populateUser: function (req, res) {
-        db.User.findOne({username:"tester"}).populate("times").exec(function(err,doc){
+        db.User.findById(req.params.id).populate("times").exec(function(err,doc){
             console.log(doc);
             console.log(`err ${err}`);
+            res.json(doc)
         })
         // db
         //     .User

@@ -15,9 +15,8 @@ module.exports = function (passport) {
 				country: req.user.country,
 				isAuthenticated: true
 			});
-			//you can also pass up any other fields you with to expose
-			//for example, 
-			//nickname: req.user.nickname
+			// you can also pass up any other fields you with to expose for example,
+			// nickname: req.user.nickname
 		} else {
 			res.json({
 				userId: null,

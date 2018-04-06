@@ -20,7 +20,7 @@ class App extends Component {
     lastname: "",
     email: "",
     state: "",
-    country:"",
+    country: "",
     auth: {
       userId: "",
       username: "",
@@ -56,7 +56,7 @@ class App extends Component {
             lastname,
             email,
             state,
-            country,
+            country
           }
         });
       });
@@ -79,8 +79,7 @@ class App extends Component {
       firstname: this.state.firstname,
       lastname: this.state.lastname,
       state: this.state.state,
-      country: this.state.country,
-      
+      country: this.state.country
     };
     this.setState({username: "", password: ""});
     const {name} = event.target;
@@ -88,11 +87,16 @@ class App extends Component {
       .post(name, newUser)
       .then((data) => {
         if (data.data.isAuthenticated) {
-          const {userId, isAuthenticated, username,firstname,
+          const {
+            userId,
+            isAuthenticated,
+            username,
+            firstname,
             lastname,
             email,
             state,
-            country} = data.data;
+            country
+          } = data.data;
           this.setState({
             auth: {
               userId,
@@ -102,7 +106,7 @@ class App extends Component {
               lastname,
               email,
               state,
-              country,
+              country
             }
           });
         }
@@ -131,8 +135,8 @@ class App extends Component {
       <Router>
         <div>
           <CoverImage/>
-          <Ticker />
-          <NavBar isAuthenticated={loggedIn} handleLogout={this.HandleLogout}/>
+          <Ticker/>
+          <NavBar isAuthenticated={loggedIn} handleLogout={this.handleLogout}/>
           <Route
             exact
             path="/"
@@ -149,8 +153,16 @@ class App extends Component {
             render=
             {()=> { if(!loggedIn) { return <Redirect to = "/" /> } else { return <Home handleLogout = {this.handleLogout} auth = { this.state.auth }/> } } }/>
 
-          <Route exact path="/Profile" render= {()=><Profile auth= {this.state.auth} lastname = {this.state.lastname} firstname = {this.state.firstname} state = {this.state.state} country={this.state.country} email = {this.state.email}/>}/>
-          <Route exact path="/StopWatch" render= {()=><StopWatch auth = {this.state.auth}/>}/>
+          <Route
+            exact
+            path="/Profile"
+            render=
+            {()=><Profile auth= {this.state.auth} lastname = {this.state.lastname} firstname = {this.state.firstname} state = {this.state.state} country={this.state.country} email = {this.state.email}/>}/>
+          <Route
+            exact
+            path="/StopWatch"
+            render=
+            {()=><StopWatch auth = {this.state.auth}/>}/>
           <Route exact path="/YouTubePage" render= {()=><YouTubePage/>}/>
         </div>
       </Router>

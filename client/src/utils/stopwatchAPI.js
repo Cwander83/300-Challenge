@@ -9,11 +9,11 @@ export default {
 
   // Udates a user's record
   updateUserRecord: function (id,userData) {
-     //console.log("stopwatch.js:", userData._id);
     return axios.post("/api/records/"+ id, userData);
   },
+  
   populateUser: function (id) {
-    return axios.put("/api/records/" + id);
+    return axios.get("/api/stopwatchtimes/" + id);
   },
 
   // Deletes the record

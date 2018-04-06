@@ -4,10 +4,10 @@ const passportLocalMongoose = require('passport-local-mongoose');
 
 const User = new Schema({
 
-	times: {
+	times: [{
 		type: Schema.Types.ObjectId,
 		ref: "StopWatchTimes"
-	},
+	}],
 	email: {
 		type: String,
 		match: [/.+@.+\..+/, "Please enter a valid e-mail address"]

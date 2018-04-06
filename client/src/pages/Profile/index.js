@@ -1,38 +1,85 @@
 import React from "react";
 import {Jumbotron} from "react-bootstrap";
-//import Table from "../../components/Table"
-//import axios from "axios";
+import stopwatchAPI from "../../utils/stopwatchAPI";
 
-export default class Profile extends React.Component{
-render(){
-console.log(this.props);
-return (
-    
-     <div>
-         <Jumbotron className="profileJumbotron">
+export default class Profile extends React.Component {
+    state = {
 
-             <h1>Welcome back, {this.props.auth.firstname}</h1>
+        times: null,
+        recoredtime: "",
+        date: "",
+        challenge: false
+    }
 
-            <h2>Username</h2>
-            <h3>{this.props.auth.username}</h3>
-         <h2>First Name</h2>
-             <h3>{this.props.auth.firstname}</h3>
+    componentDidMount() {
+        this.findAllUserRecords(this.props.auth.userId);
+    }
 
-            <h2>Last Name</h2>
-            <h3>{this.props.auth.lastname}</h3>
+    findAllUserRecords = (userId) => {
 
-          <h2>Email</h2>
-            <h3>{this.props.auth.email}</h3>
+        console.log(`userId findUserRecords: ${userId}`);
+        stopwatchAPI
+            .populateUser(userId)
+            .then(res => {
 
+                return this.setState({times: res.data.times, recordedtime: "", date: ""})
+            })
+            .catch(err => console.log(err));
 
-          <h2>Location</h2>
-          <h3>{this.props.auth.state}, {this.props.auth.country}</h3>
+    }
 
-         
-            
+    renderTimes = () => {
+        return this.state.times && this
+            .state
+            .times
+            .map(time => (
+                <ul>
+                    <li>_id={time._id}</li>
+                    <li>key={time._id}</li>
+                    <li>recordedtime={time.recordedtime}</li>
+                    <li>date={time.date}</li>
+                </ul>
 
-       </Jumbotron>
-    </div>
-)
-}
+            ))
+
+    }
+    render() {
+   
+        return (
+
+            <div>
+                <Jumbotron className="profileJumbotron">
+
+                    <h1>Welcome back, {this.props.auth.firstname}</h1>
+
+                    <h2>Username</h2>
+                    <h3>{this.props.auth.username}</h3>
+                    <h2>First Name</h2>
+                    <h3>{this.props.auth.firstname}</h3>
+
+                    <h2>Last Name</h2>
+                    <h3>{this.props.auth.lastname}</h3>
+
+                    <h2>Email</h2>
+                    <h3>{this.props.auth.email}</h3>
+
+                    <h2>Location</h2>
+                    <h3>{this.props.auth.state}, {this.props.auth.country}</h3>
+                    <div>{this.state.times && this
+                            .state
+                            .times
+                            .map(time => (
+                                <ul>
+                                    <li>_id={time._id}</li>
+                                    <li>key={time._id}</li>
+                                    <li>recordedtime={time.recordedtime}</li>
+                                    <li>date={time.date}</li>
+                                </ul>
+
+                            ))}</div>
+
+                </Jumbotron>
+            </div>
+        )
+    }
 }
