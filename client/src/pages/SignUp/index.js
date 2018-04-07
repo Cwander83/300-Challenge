@@ -1,7 +1,7 @@
 import React from 'react';
 import "./style.css";
 import {Link} from 'react-router-dom';
-import {ControlLabel, FormControl, FormGroup} from "react-bootstrap";
+import {ControlLabel, FormControl, FormGroup, Button} from "react-bootstrap";
 
 const SignUp = (props)=> {
 
@@ -15,9 +15,9 @@ const SignUp = (props)=> {
 	//   }
 
 	return (
-		<div>
-			<h1>SIGN UP</h1>
-			<Link to = "/" >Go to sign in</Link>
+		<div  className="container">
+			<h1 className="signInUp">SIGN UP</h1>
+			<Link className="signLink"to = "/" >Go to sign in</Link>
 			<FormGroup >
 				
 				<ControlLabel>Create Username</ControlLabel><br/>
@@ -41,7 +41,7 @@ const SignUp = (props)=> {
 				<ControlLabel>Country</ControlLabel><br/>
 				<FormControl name='country' type='name' value = {props.country} onChange = {props.handleChange} />
 				<br />
-				<button type = 'submit' name = "/auth/signup" onClick = {props.handleSubmit}>Sign Up</button>
+				<Button type = 'submit' name = "/auth/signup" onClick = {props.handleSubmit}>Sign Up</Button>
 			</FormGroup>
 		</div>
 	);

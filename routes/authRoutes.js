@@ -13,7 +13,8 @@ module.exports = function (passport) {
 				lastname: req.user.lastname,
 				state: req.user.state,
 				country: req.user.country,
-				isAuthenticated: true
+				isAuthenticated: true,
+				challengeregistered: req.user.challengeregistered
 			});
 			// you can also pass up any other fields you with to expose for example,
 			// nickname: req.user.nickname
@@ -40,7 +41,8 @@ module.exports = function (passport) {
 				lastname: user.lastname,
 				state: user.state,
 				country: user.country,
-				isAuthenticated: true
+				isAuthenticated: true,
+				challengeregistered: false
 			});
 		});
 	});
@@ -55,7 +57,8 @@ module.exports = function (passport) {
 			lastname: req.user.lastname,
 			state: req.user.state,
 			country: req.user.country,
-			isAuthenticated: true
+			isAuthenticated: true,
+			challengeregistered: req.user.challengeregistered
 		});
 	});
 

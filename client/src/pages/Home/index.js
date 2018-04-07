@@ -2,6 +2,7 @@ import React from 'react';
 import {Jumbotron} from "react-bootstrap";
 import "animate.css/animate.min.css";
 import ScrollAnimation from "react-animate-on-scroll";
+import HallofFame from "../../components/HallofFame";
 import "./style.css";
 
 const Home = (props) => {
@@ -35,6 +36,9 @@ const Home = (props) => {
       </ScrollAnimation>
 </Jumbotron>
     </Jumbotron>
+    <Jumbotron className="jumboHome jumboHoF">
+    <HallofFame />
+      </Jumbotron>
 </div>
   );
 }

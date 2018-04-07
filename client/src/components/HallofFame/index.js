@@ -1,11 +1,11 @@
 import React from "react";
-import Marquee from "react-smooth-marquee";
+// import Marquee from "react-smooth-marquee";
 import "./style.css";
 import Moment from 'react-moment';
 
 import stopwatchAPI from "../../utils/stopwatchAPI"
 
-export default class Ticker extends React.Component {
+export default class HallofFame extends React.Component {
     state = {
         stopwatchtimes: null,
         username: "",
@@ -42,17 +42,17 @@ export default class Ticker extends React.Component {
             .stopwatchtimes
             .map(times => (
 
-                <h1>{times.username} Time: {this.formatSeconds(times.recordedtime)} date:<Moment format='MMMM Do YYYY, h:mm:ss a'>
-                1976-04-19T12:59-0500
-            </Moment></h1>
+                <li>{times.username} Time: {this.formatSeconds(times.recordedtime)} date: <Moment format='ll'>
+                {times.date}
+            </Moment></li>
 
             ))
     }
 
     render() {
         return (
-            <Marquee>{this.state.stopwatchtimes && this.renderVideos()}
-            </Marquee>
+            <ol className="mapper">{this.state.stopwatchtimes && this.renderVideos()}</ol>
+            
         )
     }
 }

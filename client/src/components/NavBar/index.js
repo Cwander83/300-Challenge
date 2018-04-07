@@ -7,7 +7,7 @@ import "./style.css";
 
 const NavBar = (props) => (
 
-  <Navbar collapseOnSelect>
+  <Navbar className="Navbarmain" collapseOnSelect>
     <Navbar.Header>
       <Navbar.Toggle/>
     </Navbar.Header>

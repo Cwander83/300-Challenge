@@ -1,6 +1,11 @@
+@import url('https://fonts.googleapis.com/css?family=Indie+Flower');
+
 h1 {
     flex-grow: 1;
     flex-shrink: 1;
+    font-family: 'Indie Flower', cursive;
+    font-weight: 900;
+    color: red;
     
 }
 
@@ -11,3 +16,4 @@ h1 {
     flex-direction: column;
     margin: 40px;
 }
+

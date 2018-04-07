@@ -20,7 +20,8 @@ const User = new Schema({
 		type: String
 	},
 	state: String,
-	country: String
+	country: String,
+	challengeregistered: Boolean
 });
 
 // passport-local-mongoose creates a 'username' and some password fields for you

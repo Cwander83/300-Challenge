@@ -4,13 +4,14 @@ import {BrowserRouter as Router, Route, Redirect} from 'react-router-dom';
 import axios from 'axios';
 import CoverImage from "./components/CoverImage";
 import NavBar from "./components/NavBar";
-import Ticker from "./components/Ticker";
+//import Ticker from "./components/Ticker";
 import SignIn from "./pages/SignIn";
 import SignUp from "./pages/SignUp";
 import Home from "./pages/Home";
 import YouTubePage from "./pages/YouTube";
 import Profile from "./pages/Profile";
 import StopWatch from "./pages/StopWatch";
+import Challenge from "./pages/Challenge";
 
 
 class App extends Component {
@@ -46,7 +47,8 @@ class App extends Component {
           lastname,
           email,
           state,
-          country
+          country,
+          challengeregistered
         } = result.data
         this.setState({
           auth: {
@@ -57,7 +59,8 @@ class App extends Component {
             lastname,
             email,
             state,
-            country
+            country,
+            challengeregistered
           }
         });
       });
@@ -80,7 +83,8 @@ class App extends Component {
       firstname: this.state.firstname,
       lastname: this.state.lastname,
       state: this.state.state,
-      country: this.state.country
+      country: this.state.country,
+      challengeregistered: this.state.challengeregistered
     };
     this.setState({username: "", password: ""});
     const {name} = event.target;
@@ -96,7 +100,8 @@ class App extends Component {
             lastname,
             email,
             state,
-            country
+            country,
+            challengeregistered
           } = data.data;
           this.setState({
             auth: {
@@ -107,7 +112,8 @@ class App extends Component {
               lastname,
               email,
               state,
-              country
+              country,
+              challengeregistered
             }
           });
         }
@@ -137,7 +143,7 @@ class App extends Component {
       <Router>
         <div>
           <CoverImage/>
-          <Ticker/>
+          {/* <Ticker/> */}
           <NavBar isAuthenticated={loggedIn} handleLogout={this.handleLogout}/>
           <Route
             exact
@@ -165,6 +171,11 @@ class App extends Component {
             path="/StopWatch"
             render=
             {()=><StopWatch auth = {this.state.auth}/>}/>
+            <Route
+            exact
+            path="/Challenge"
+            render=
+            {()=><Challenge auth = {this.state.auth}/>}/>
           <Route exact path="/YouTubePage" render= {()=><YouTubePage/>}/>
         </div>
       </Router>
