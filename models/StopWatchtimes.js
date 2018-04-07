@@ -3,8 +3,8 @@ const Schema = mongoose.Schema;
 
 
 const StopWatchTimes = new Schema({
-
-    recordedtime: String,
+    username: String,
+    recordedtime: {type: Number},
 
     date: {
         type: Date,

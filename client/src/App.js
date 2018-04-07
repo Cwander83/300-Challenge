@@ -12,6 +12,7 @@ import YouTubePage from "./pages/YouTube";
 import Profile from "./pages/Profile";
 import StopWatch from "./pages/StopWatch";
 
+
 class App extends Component {
   state = {
     username: "",
@@ -125,6 +126,7 @@ class App extends Component {
             isAuthenticated: false
           }
         });
+        return <Redirect to = "/" />
       })
   };
 

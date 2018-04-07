@@ -39,7 +39,7 @@ const NavBar = (props) => (
           </NavItem>)
         }
          {props.isAuthenticated &&
-					(<NavItem className="NavItem" onClick = {this.handleLogout}>
+					(<NavItem className="NavItem" onClick = {props.handleLogout}>
 						<Link className="NavItem" to="/">Logout</Link>
           </NavItem>)
         }

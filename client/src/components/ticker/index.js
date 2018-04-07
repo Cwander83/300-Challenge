@@ -1,13 +1,58 @@
 import React from "react";
 import Marquee from "react-smooth-marquee";
-import "./style.css"
-//import axios from "axios";
+import "./style.css";
+import Moment from 'react-moment';
+
+import stopwatchAPI from "../../utils/stopwatchAPI"
 
 export default class Ticker extends React.Component {
-    render(){
-    return ( 
-        <Marquee><div><h1>Content goes here</h1></div> </Marquee>
-    )
-  }
-}
+    state = {
+        stopwatchtimes: null,
+        username: "",
+        recordedtime: "",
+        date: ""
+    };
 
+    componentDidMount() {
+        this.loadTopRecords();
+    }
+    loadTopRecords = () => {
+        stopwatchAPI
+            .findAllRecords()
+            .then(res => this.setState({stopwatchtimes: res.data, username: "", recordedtime: "", date: ""}))
+            .catch(err => console.log(err));
+    };
+
+    formatSeconds = (seconds) => {
+        let minutes = Math.floor(seconds / 60);
+        seconds = ('0' + seconds % 60).slice(-2);
+
+        if (minutes === 0) {
+            minutes = "00";
+        } else if (minutes < 10) {
+            minutes = "0" + minutes;
+        };
+
+        return minutes + ":" + seconds;
+
+    };
+    renderVideos = () => {
+        return this
+            .state
+            .stopwatchtimes
+            .map(times => (
+
+                <h1>{times.username} Time: {this.formatSeconds(times.recordedtime)} date:<Moment format='MMMM Do YYYY, h:mm:ss a'>
+                1976-04-19T12:59-0500
+            </Moment></h1>
+
+            ))
+    }
+
+    render() {
+        return (
+            <Marquee>{this.state.stopwatchtimes && this.renderVideos()}
+            </Marquee>
+        )
+    }
+}

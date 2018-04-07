@@ -28,21 +28,21 @@ export default class Profile extends React.Component {
 
     }
 
-    renderTimes = () => {
-        return this.state.times && this
-            .state
-            .times
-            .map(time => (
-                <ul>
-                    <li>_id={time._id}</li>
-                    <li>key={time._id}</li>
-                    <li>recordedtime={time.recordedtime}</li>
-                    <li>date={time.date}</li>
-                </ul>
+    // renderTimes = () => {
+    //     return this.state.times && this
+    //         .state
+    //         .times
+    //         .map(time => (
+    //             <ul>
+    //                 <li>_id={time._id}</li>
+    //                 <li>key={time._id}</li>
+    //                 <li>recordedtime={time.recordedtime}</li>
+    //                 <li>date={time.date}</li>
+    //             </ul>
 
-            ))
+    //         ))
 
-    }
+    // }
     render() {
    
         return (

@@ -64,7 +64,8 @@ module.exports = {
         db
             .StopWatchTimes
             .find()
-            
+            .sort({recordedtime: 1})
+            .limit(10)
             .then(dbStopWatchTimes => res.json(dbStopWatchTimes))
             .catch(err => res.status(422).json(err));
     },
@@ -84,7 +85,7 @@ module.exports = {
     // },
     // to populate the times from a user
     populateUser: function (req, res) {
-        db.User.findById(req.params.id).populate("times").exec(function(err,doc){
+        db.User.findById(req.params.id).populate("times").sort('recordedtime').exec(function(err,doc){
             console.log(doc);
             console.log(`err ${err}`);
             res.json(doc)
