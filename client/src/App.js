@@ -4,7 +4,7 @@ import {BrowserRouter as Router, Route, Redirect} from 'react-router-dom';
 import axios from 'axios';
 import CoverImage from "./components/CoverImage";
 import NavBar from "./components/NavBar";
-//import Ticker from "./components/Ticker";
+
 import SignIn from "./pages/SignIn";
 import SignUp from "./pages/SignUp";
 import Home from "./pages/Home";
@@ -23,6 +23,7 @@ class App extends Component {
     email: "",
     state: "",
     country: "",
+    challengeregistered: false,
     auth: {
       userId: "",
       username: "",
@@ -31,7 +32,8 @@ class App extends Component {
       email: "",
       state: "",
       country: "",
-      isAuthenticated: false
+      isAuthenticated: false,
+      challengeregistered: false
     }
   };
 
@@ -143,7 +145,6 @@ class App extends Component {
       <Router>
         <div>
           <CoverImage/>
-          {/* <Ticker/> */}
           <NavBar isAuthenticated={loggedIn} handleLogout={this.handleLogout}/>
           <Route
             exact
@@ -175,7 +176,7 @@ class App extends Component {
             exact
             path="/Challenge"
             render=
-            {()=><Challenge auth = {this.state.auth}/>}/>
+            {()=><Challenge handleSubmit = {this.handleSubmit} auth = {this.state.auth}/>}/>
           <Route exact path="/YouTubePage" render= {()=><YouTubePage/>}/>
         </div>
       </Router>

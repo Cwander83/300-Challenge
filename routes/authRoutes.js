@@ -42,7 +42,7 @@ module.exports = function (passport) {
 				state: user.state,
 				country: user.country,
 				isAuthenticated: true,
-				challengeregistered: false
+				challengeregistered: user.challengeregistered
 			});
 		});
 	});

@@ -6,7 +6,7 @@ import "./style.css"
 
 const MediaBox = props => <Media>
 
-    <ScrollAnimation animateIn='fadeIn' delay={200}>
+    <ScrollAnimation animateIn='fadeIn' delay={50}>
 
         <Media.Left>
             <div
@@ -20,10 +20,10 @@ const MediaBox = props => <Media>
             </div>
         </Media.Left>
     </ScrollAnimation>
-    <ScrollAnimation animateIn="lightSpeedIn" delay={200}>
+    <ScrollAnimation animateIn="lightSpeedIn" delay={50}>
     <Media.Body>
         <Media.Heading>{props.Title}</Media.Heading>
-        <p>
+        <p className="mediaP">
             {props.text}
         </p>
     </Media.Body>

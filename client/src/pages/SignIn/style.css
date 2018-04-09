@@ -1,3 +1,5 @@
+
+
 .signInUp {
     text-align: center;
     font-size: 42px;
@@ -5,4 +7,38 @@
 
 .signLink {
     text-align: center;
- } 
+}
+
+.control-label {
+    font-family: 'Indie Flower', cursive;
+    font-size: 18px;
+}
+
+.signContainer {
+    border: 1px solid black;
+    
+    padding: 10px;
+    box-shadow: 5px 10px black;
+ 
+}
+.signInGroup {
+       background-image: url("../../components/images/300-logo.png");
+    background-size: 30%;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.backImg {
+    position: relative;
+    top: 0;
+    left: 0;
+    width: 10%;
+    z-index: -1;
+}
+
+/* input {
+    background: transparent;
+} */
+.signInput {
+    background: transparent;
+}

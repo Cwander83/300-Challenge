@@ -8,15 +8,15 @@ import "./style.css";
 const Home = (props) => {
 
   return (
-<div>
+<div className="homeDiv">
     <Jumbotron className="jumboHome">
-      <ScrollAnimation delay={200}animateIn='fadeIn' animateOut='fadeOut'>
+      <ScrollAnimation delay={50}animateIn='fadeIn' animateOut='fadeOut'>
         <h1>
           Welcome To
         </h1>
 
       </ScrollAnimation>
-      <ScrollAnimation delay={300} animateIn='bounceInLeft' animateOut='bounceOutLeft'>
+      <ScrollAnimation delay={50} animateIn='bounceInLeft' animateOut='bounceOutLeft'>
         <h1>
           300 Challenge
 
@@ -24,7 +24,7 @@ const Home = (props) => {
       </ScrollAnimation>
       <br/>
       <Jumbotron className="jumboHome">
-      <ScrollAnimation delay={300} animateIn='bounceInRight' animateOut='bounceOutLeft'>
+      <ScrollAnimation delay={50} animateIn='bounceInRight' animateOut='bounceOutLeft'>
         <h3>
           Now you're all signed in lets start to go over why you're here!
         </h3>

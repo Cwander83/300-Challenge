@@ -43,7 +43,7 @@ export default class YouTubePage extends React.Component {
     render() {
         return (
              <div>
-           <Jumbotron >
+           
                <Jumbotron className="jumboHome">
            <ScrollAnimation duration={8} animateIn='rubberBand' initallyVisible={true}>
         <h1>
@@ -51,9 +51,10 @@ export default class YouTubePage extends React.Component {
         </h1>
 
       </ScrollAnimation>
-      </Jumbotron>
+      <Jumbotron className="jumboVideo">
                 {this.renderVideos()}
                 </Jumbotron>
+          </Jumbotron>      
                 </div>
             
         )

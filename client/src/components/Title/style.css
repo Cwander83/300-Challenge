@@ -1,0 +1,11 @@
+.welcomeFlex {
+    display: flex;
+    text-align: center;
+    margin: 4px;
+}
+
+
+.welcome{
+    font-size: 60px;
+
+}

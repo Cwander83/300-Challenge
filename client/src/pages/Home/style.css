@@ -8,12 +8,16 @@ h1 {
     color: red;
     
 }
+.homeDiv {
+    background-color: whitesmoke;
+}
 
 .jumboHome {
+   
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    margin: 40px;
+   
 }
 

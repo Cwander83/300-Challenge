@@ -11,6 +11,12 @@ export default {
   updateUserRecord: function (id,userData) {
     return axios.post("/api/records/"+ id, userData);
   },
+
+// updating user to be in challenge
+  updateUser: function(id, userData){
+    return axios.post("api/records/challenge/"+id, userData)
+  },
+
   // Adding stopwatch times to user
   populateUser: function (id) {
     return axios.get("/api/stopwatchtimes/" + id);
@@ -20,6 +26,7 @@ export default {
   deleteRecord: function (id) {
     return axios.delete("/api/records/" + id);
   },
+  
   // Finding all stopwatch records for top 10
   findAllRecords: function (){
     return axios.get("/api/stopwatchtimes/")

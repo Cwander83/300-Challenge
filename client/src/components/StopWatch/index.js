@@ -73,14 +73,11 @@ export default class Stopwatch extends React.Component {
     };
 
     render() {
-        console.log(this.props.auth.userId);
-        // console.log(this.props.auth.username);
-        const userId = this.props.auth.userId;
-
+       
         return (
             <div className="stopwatch">
                 <h1 className="stopwatch-timer">{this.formatSeconds(this.state.secondsElapsed)}</h1>
-                <p>{userId}</p>
+                
                 {(this.state.secondsElapsed === 0 || this.incrementer === this.state.lastClearedIncrementer
                     ? <Button
                             className="start-btn"

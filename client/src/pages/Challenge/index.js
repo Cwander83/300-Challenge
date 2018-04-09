@@ -1,39 +1,46 @@
 import React from "react";
-//import Moment from 'react-moment';
+import Moment from 'react-moment';
 import Register from '../../components/Register';
 import Results from "../../components/Results";
 import StopWatchChallenge from "../../components/StopWatchChallenge";
 
 export default class Challenge extends React.Component {
+    
     state = {
-        challengeStart: 1 - 1 - 1,
-        challengeEnd: 1 - 1 - 1,
-        childVisible: false
+        challengeStart: "",
+        challengeEnd: ""
+       
 
     }
-
-    onClick() {
-        this.setState(prevState => ({
-            childVisible: !prevState.childVisible
-        }));
+    componentWillMount(){
+        this.setState({challengeStart:"04 07 18, 7:58:05 pm", challengeEnd:"04 09 18, 7:58:05 pm"})
     }
+
+    
 
     render() {
-        // setTimeout(() => {
-        //     this.setState({});
-
-        // }, 1000)
+      
 
         return (
             <div>
-                <div onClick={() => this.onClick()}>
-                    Parent - click me to show/hide my childVisible</div>
-                {this.state.childVisible
-                    ? <Register/>
-                    : <Results/>}
+                <div></div>
+                {this.state.challengeStart <= <Moment format='MM DD YY, h:mm:ss a'>{Date.now()}</Moment>
+                   
+                   ? <Register handleSubmit = {this.props.handleSubmit} auth={this.props.auth}/>
+                  
+                  :<StopWatchChallenge auth={this.props.auth}/>}
+                   
+                   
+                    <div>
 
-                <StopWatchChallenge auth={this.props.auth}/>
-                {/* <Results/> */}
+
+
+ <Moment format='MM DD YY, h:mm:ss a'>{this.state.challengeStart}</Moment> <br />
+ <Moment format='MM DD YY, h:mm:ss a'>{Date.now()}</Moment> 
+
+</div>
+                
+                <Results/>
             </div>
         )
     }
