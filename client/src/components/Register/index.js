@@ -7,19 +7,17 @@ export default class Register extends React.Component {
         challengeregistered: true
     }
 
-    registerDb = ({ userId }) => {
-        console.log(userId);
+    registerDb = ({userId}) => {
+
         const data = {
             challengeregistered: true
         };
         stopwatchAPI.updateUser(userId, data)
-        console.log(`REGISTER ${userId}`);
 
     }
 
     render() {
 
-        console.log(`REGISTER ${this.props.auth.challengeregistered}`);
         return (
             <div>
                 <h1>THE 300 CHALLENGE</h1>
