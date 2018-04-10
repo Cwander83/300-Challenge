@@ -20,7 +20,9 @@ const User = new Schema({
 		type: String
 	},
 	state: String,
+
 	country: String,
+	
 	challengeregistered: Boolean
 });
 

@@ -23,7 +23,7 @@ module.exports = {
             .User
             .findByIdAndUpdate({
                 _id: req.params.id
-            }, req.body)
+            }, {$set:{challengeregistered: true}})
             .then(function (dbUser) {
                 console.log(`dbUser ${dbUser}`)
                 console.log(`req.body ${req.body}`)

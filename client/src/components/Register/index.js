@@ -4,31 +4,26 @@ import stopwatchAPI from "../../utils/stopwatchAPI";
 
 export default class Register extends React.Component {
     state = {
-        challengeregistered:true
+        challengeregistered: true
     }
 
-    handleClick (auth){
-        console.log(auth);
-        //userId = this.props.auth.userId
-       this.registerDb();
-    }
-    registerDb(userId) {
-         const data = {
+    registerDb = ({ userId }) => {
+        console.log(userId);
+        const data = {
             challengeregistered: true
         };
-        stopwatchAPI.updateUser(userId,data)
+        stopwatchAPI.updateUser(userId, data)
         console.log(`REGISTER ${userId}`);
-        
-        
+
     }
 
-    render() {  
-        
+    render() {
+
         console.log(`REGISTER ${this.props.auth.challengeregistered}`);
         return (
             <div>
                 <h1>THE 300 CHALLENGE</h1>
-                <Button auth= {this.props.auth.userId} onClick ={this.handleClick}>Register</Button>
+                <Button onClick={() => this.registerDb(this.props.auth)}>Register</Button>
             </div>
         )
     }
