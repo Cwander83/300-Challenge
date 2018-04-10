@@ -1,0 +1,9 @@
+.mapper {
+    display: flex;
+    flex-direction: column;
+    list-style-type: none;
+    border: 1px solid black;
+    padding: 30px;
+    text-align: center;
+    box-shadow: 5px 10px black;
+}

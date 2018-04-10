@@ -1,4 +1,17 @@
 .jumboVideo {
     margin-left: 50px;
     margin-right: 50px;
+    background-color: white;
+}
+
+.videoH1 {
+    text-align: center;
+    font-size: 63px;
+    color: red;
+}
+
+.jumboHome{
+    display: flex;
+    flex-direction: column;
+    background-color: white;
 }

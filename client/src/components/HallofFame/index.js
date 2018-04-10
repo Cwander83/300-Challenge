@@ -41,18 +41,22 @@ export default class HallofFame extends React.Component {
             .state
             .stopwatchtimes
             .map(times => (
-
-                <li>{times.username} Time: {this.formatSeconds(times.recordedtime)} date: <Moment format='ll'>
+                <li>
+                    <h4><strong>{times.username}</strong> posted a record time of {this.formatSeconds(times.recordedtime)} on <Moment format='ll'>
                 {times.date}
-            </Moment></li>
+            </Moment></h4></li>
 
             ))
     }
 
     render() {
         return (
+            <div>
+            <h1>TOP RECORDS ALL-TIME</h1>
+            <div>
             <ol className="mapper">{this.state.stopwatchtimes && this.renderVideos()}</ol>
-            
+            </div>
+            </div>
         )
     }
 }

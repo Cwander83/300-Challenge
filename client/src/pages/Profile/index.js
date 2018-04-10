@@ -1,6 +1,9 @@
 import React from "react";
-import {Jumbotron} from "react-bootstrap";
+import {Jumbotron, Table} from "react-bootstrap";
+import "./style.css";
 import stopwatchAPI from "../../utils/stopwatchAPI";
+import "animate.css/animate.min.css";
+import ScrollAnimation from "react-animate-on-scroll";
 import Moment from "react-moment";
 import DeleteBtn from "../../components/DeleteBtn/DeleteBtn";
 
@@ -23,11 +26,7 @@ export default class Profile extends React.Component {
             .populateUser(userId)
             .then(res => {
 
-                return this.setState({
-                    times: res.data.times,
-                    recordedtime: "",
-                    date: ""
-                })
+                return this.setState({times: res.data.times, recordedtime: "", date: ""})
             })
             .catch(err => console.log(err));
 
@@ -47,43 +46,60 @@ export default class Profile extends React.Component {
     };
 
     render() {
-console.log(this.props);
+        console.log(this.props);
         return (
-
-            <div>
+<Jumbotron className="jumboHome">
+            <div className="container profileContainer">
+                <ScrollAnimation animateIn='fadeIn' delay={50} animateOut='fadeOut'>
+                    <h1 className="profileH1">
+                        PROFILE
+                    </h1>
+                </ScrollAnimation>
                 <Jumbotron className="profileJumbotron">
-
-                    <h1>Welcome back, {this.props.auth.firstname}</h1>
-
-                    <h2>Username</h2>
+                    <h2 className="profileH2">Username</h2>
                     <h3>{this.props.auth.username}</h3>
-                    <h2>First Name</h2>
+                    <h2 className="profileH2">First Name</h2>
                     <h3>{this.props.auth.firstname}</h3>
 
-                    <h2>Last Name</h2>
+                    <h2 className="profileH2">Last Name</h2>
                     <h3>{this.props.auth.lastname}</h3>
 
-                    <h2>Email</h2>
+                    <h2 className="profileH2">Email</h2>
                     <h3>{this.props.auth.email}</h3>
 
-                    <h2>Location</h2>
+                    <h2 className="profileH2">Location</h2>
                     <h3>{this.props.auth.state}, {this.props.auth.country}</h3>
-                    <div>{this.state.times && this
+                    <Jumbotron className="profileJumbotron">
+                    <div className="tableBox">{this.state.times && this
                             .state
                             .times
                             .map(time => (
 
-                                <ul key={time._id}>
+                                <Table key={time._id}>
+                                    <thead className="profileThead">
+                                        <tr>
 
-                                    <li>recordedtime= {this.formatSeconds(time.recordedtime)}
-                                        date:
-                                        <Moment format='ll'>{time.date}</Moment><DeleteBtn id ={time._id}/></li>
-                                </ul>
+                                            <th>Time:</th>
+                                            <th>Recorded Date:</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody className="profileTbody">
+                                        <tr>
+
+                                            <td>{this.formatSeconds(time.recordedtime)}
+                                                (Mins:Secs)</td>
+
+                                            <td>
+                                                <Moment format='ll'>{time.date}</Moment><DeleteBtn id ={time._id}/></td>
+                                        </tr>
+                                    </tbody>
+                                </Table>
 
                             ))}</div>
-
+ </Jumbotron>
                 </Jumbotron>
             </div>
+            </Jumbotron>
         )
     }
 }

@@ -8,7 +8,7 @@ const MediaBox = props => <Media>
 
     <ScrollAnimation animateIn='fadeIn' delay={50}>
 
-        <Media.Left>
+        <Media.Left className="mediaLeft">
             <div
                 style={{
                 width: 375,

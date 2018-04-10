@@ -1,9 +1,39 @@
 .profileJumbotron {
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
+    font-family: 'Indie Flower', cursive;
+    background-color: white;
+    border: 1px solid black;
+    padding: 10px;
+    box-shadow: 5px 10px black;
 }
 
-h1, h2, h3 {
-    margin: auto;
+.profileH1 {
+    text-align: center;
+    font-size: 63px;
+    color: red;
+}
+
+.profileH2 {
+    text-decoration: underline black;
+    color: red;
+}
+
+.profileThead {
+    font-size: 32px;
+    color: red;
+}
+
+.profileTbody {
+    font-size: 28px;
+}
+.tableBox{
+    margin-left: 5px;
+    margin-right: 5px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
