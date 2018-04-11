@@ -39,7 +39,7 @@ mongoose.Promise = global.Promise;
 // Connect to the Mongo DB
 //add mongo heroku uri
 mongoose.connect(
-  process.env.MONGODB_URI || "mongodb://localhost/300workout"
+  process.env.MONGODB_URI || "mongodb://localhost/300workout2"
 );
 
 // Start the API server
