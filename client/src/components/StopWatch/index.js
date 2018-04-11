@@ -1,5 +1,6 @@
 import React from "react";
-import {Button} from "react-bootstrap";
+import "./style.css"
+import {Button, Jumbotron} from "react-bootstrap";
 import stopwatchAPI from "../../utils/stopwatchAPI";
 
 export default class Stopwatch extends React.Component {
@@ -46,22 +47,21 @@ export default class Stopwatch extends React.Component {
 
             secondsElapsed: this.state.secondsElapsed + 1
         }), 1000);
-        
+
     };
 
     handleStopClick() {
         clearInterval(this.incrementer);
         this.setState({userId: this.props.auth.userId, username: this.props.auth.username, lastClearedIncrementer: this.incrementer, secondsElapsed: 0, recordTime: this.state.recordTime})
-        console.log(this.props.auth.username);
+        
         const userId = this.props.auth.userId;
-        const username= this.props.auth.username;
-        console.log(username);
+        const username = this.props.auth.username;
+        
         this.saveRecord(userId, username);
     };
 
-    saveRecord = (userId,username, time) => {
+    saveRecord = (userId, username, time) => {
 
-        //time = this.formatDbSeconds(this.state.secondsElapsed);
         time = this.state.secondsElapsed;
         const newRecord = {
             username: username,
@@ -73,24 +73,29 @@ export default class Stopwatch extends React.Component {
     };
 
     render() {
-       
-        return (
-            <div className="stopwatch">
-                <h1 className="stopwatch-timer">{this.formatSeconds(this.state.secondsElapsed)}</h1>
-                
-                {(this.state.secondsElapsed === 0 || this.incrementer === this.state.lastClearedIncrementer
-                    ? <Button
-                            className="start-btn"
-                            onClick={this
-                            .handleStartClick
-                            .bind(this)}>start</Button>
-                    : <Button
-                        className="stop-btn"
-                        onClick={this
-                        .handleStopClick
-                        .bind(this)}>stop</Button>)}
 
-            </div>
+        return (
+            <Jumbotron className="jumboStop">
+            
+                <div className="stopwatch">
+                    <h2 className="stopwatchTimer">{this.formatSeconds(this.state.secondsElapsed)}</h2>
+
+                    {(this.state.secondsElapsed === 0 || this.incrementer === this.state.lastClearedIncrementer
+                        ? <Button
+                                className="startbtn"
+                                onClick={this
+                                .handleStartClick
+                                .bind(this)}>start</Button>
+                        : <Button
+                            className="stopbtn"
+                            onClick={this
+                            .handleStopClick
+                            .bind(this)}>stop</Button>)}
+
+                </div>
+                <h2>Non-Challenge</h2>
+            </Jumbotron>
+
         );
     }
 }

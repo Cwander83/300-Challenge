@@ -6,4 +6,10 @@
     padding: 30px;
     text-align: center;
     box-shadow: 5px 10px black;
+    font-family: 'Indie Flower', cursive;
+}
+
+.listLi{
+    flex-grow: 1;
+    flex-shrink: 4;
 }

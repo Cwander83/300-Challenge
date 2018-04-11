@@ -21,7 +21,6 @@ export default class Profile extends React.Component {
 
     findAllUserRecords = (userId) => {
 
-        console.log(`userId findUserRecords: ${userId}`);
         stopwatchAPI
             .populateUser(userId)
             .then(res => {
@@ -46,59 +45,76 @@ export default class Profile extends React.Component {
     };
 
     render() {
-        console.log(this.props);
+
         return (
-<Jumbotron className="jumboHome">
-            <div className="container profileContainer">
-                <ScrollAnimation animateIn='fadeIn' delay={50} animateOut='fadeOut'>
-                    <h1 className="profileH1">
-                        PROFILE
-                    </h1>
-                </ScrollAnimation>
-                <Jumbotron className="profileJumbotron">
-                    <h2 className="profileH2">Username</h2>
-                    <h3>{this.props.auth.username}</h3>
-                    <h2 className="profileH2">First Name</h2>
-                    <h3>{this.props.auth.firstname}</h3>
+            <Jumbotron className="jumboHome">
+                <div className="container profileContainer">
+                    <ScrollAnimation
+                        className="profileH1"
+                        animateIn='fadeIn'
+                        delay={50}
+                        animateOut='fadeOut'>
+                        <h1>
+                            PROFILE
+                        </h1>
+                    </ScrollAnimation>
 
-                    <h2 className="profileH2">Last Name</h2>
-                    <h3>{this.props.auth.lastname}</h3>
-
-                    <h2 className="profileH2">Email</h2>
-                    <h3>{this.props.auth.email}</h3>
-
-                    <h2 className="profileH2">Location</h2>
-                    <h3>{this.props.auth.state}, {this.props.auth.country}</h3>
                     <Jumbotron className="profileJumbotron">
-                    <div className="tableBox">{this.state.times && this
-                            .state
-                            .times
-                            .map(time => (
+                        <ScrollAnimation
+                            delay={50}
+                            animateIn='bounceInRight'
+                            animateOut='bounceOutLeft'>
+                            <h2 className="profileH2">Username</h2>
+                            <h3>{this.props.auth.username}</h3>
+                            <h2 className="profileH2">First Name</h2>
+                            <h3>{this.props.auth.firstname}</h3>
 
-                                <Table key={time._id}>
-                                    <thead className="profileThead">
-                                        <tr>
+                            <h2 className="profileH2">Last Name</h2>
+                            <h3>{this.props.auth.lastname}</h3>
 
-                                            <th>Time:</th>
-                                            <th>Recorded Date:</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody className="profileTbody">
-                                        <tr>
+                            <h2 className="profileH2">Email</h2>
+                            <h3>{this.props.auth.email}</h3>
 
-                                            <td>{this.formatSeconds(time.recordedtime)}
-                                                (Mins:Secs)</td>
+                            <h2 className="profileH2">Location</h2>
+                            <h3>{this.props.auth.state}, {this.props.auth.country}</h3>
+                        </ScrollAnimation>
+                        <ScrollAnimation
+                            delay={50}
+                            animateIn='bounceInRight'
+                            animateOut='bounceOutLeft'>
+                            <Jumbotron className="profileJumbotron">
+                                <div className="tableBox">{this.state.times && this
+                                        .state
+                                        .times
+                                        .map(time => (
 
-                                            <td>
-                                                <Moment format='ll'>{time.date}</Moment><DeleteBtn id ={time._id}/></td>
-                                        </tr>
-                                    </tbody>
-                                </Table>
+                                            <Table key={time._id}>
+                                                <thead className="profileThead">
+                                                    <tr>
 
-                            ))}</div>
- </Jumbotron>
-                </Jumbotron>
-            </div>
+                                                        <th>Time:</th>
+                                                        <th>Recorded Date:</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody className="profileTbody">
+                                                    <tr>
+
+                                                        <td>{this.formatSeconds(time.recordedtime)}
+                                                            (Mins:Secs)</td>
+
+                                                        <td>
+                                                            <Moment format='ll'>{time.date}</Moment><DeleteBtn id ={time._id}/></td>
+                                                    </tr>
+                                                </tbody>
+                                            </Table>
+
+                                        ))}</div>
+                            </Jumbotron>
+                        </ScrollAnimation>
+
+                    </Jumbotron>
+
+                </div>
             </Jumbotron>
         )
     }
