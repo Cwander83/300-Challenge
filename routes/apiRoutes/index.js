@@ -3,7 +3,7 @@ module.exports = function (passport) {
 	const router = require('express').Router();
 
 
-	router.use("/videos",require("./YouTubeRoutes.js")(passport));
+	router.use("/videos",require("./YoutubeRoutes.js")(passport));
 	router.use("/records", require("./StopWatchRoutes.js")(passport));
 	router.use("/stopwatchtimes", require("./TimesRoutes.js")(passport));
 	
