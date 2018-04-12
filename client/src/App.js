@@ -4,7 +4,6 @@ import {BrowserRouter as Router, Route, Redirect} from 'react-router-dom';
 import axios from 'axios';
 import CoverImage from "./components/CoverImage";
 import NavBar from "./components/NavBar";
-
 import SignIn from "./pages/SignIn";
 import SignUp from "./pages/SignUp";
 import Home from "./pages/Home";

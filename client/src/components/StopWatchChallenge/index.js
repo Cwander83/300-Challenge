@@ -1,8 +1,8 @@
 import React from "react";
-import {Button} from "react-bootstrap";
+import {Button, Jumbotron} from "react-bootstrap";
 import stopwatchAPI from "../../utils/stopwatchAPI";
 
-export default class Stopwatch extends React.Component {
+export default class StopWatchChallenge extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -52,16 +52,16 @@ export default class Stopwatch extends React.Component {
     handleStopClick() {
         clearInterval(this.incrementer);
         this.setState({userId: this.props.auth.userId, username: this.props.auth.username, lastClearedIncrementer: this.incrementer, secondsElapsed: 0, recordTime: this.state.recordTime})
-        console.log(this.props.auth.username);
+        
         const userId = this.props.auth.userId;
         const username= this.props.auth.username;
-        console.log(username);
+        
         this.saveRecord(userId, username);
     };
 
     saveRecord = (userId,username, time) => {
 
-        //time = this.formatDbSeconds(this.state.secondsElapsed);
+       
         time = this.state.secondsElapsed;
         const newRecord = {
             username: username,
@@ -73,27 +73,26 @@ export default class Stopwatch extends React.Component {
     };
 
     render() {
-        console.log(this.props.auth.userId);
-        // console.log(this.props.auth.username);
-        const userId = this.props.auth.userId;
-
+        
         return (
+            <Jumbotron className="jumboStop">
             <div className="stopwatch">
-                <h1 className="stopwatch-timer">{this.formatSeconds(this.state.secondsElapsed)}</h1>
-                <p>{userId}</p>
+                <h1 className="stopwatchTimer">{this.formatSeconds(this.state.secondsElapsed)}</h1>
+               
                 {(this.state.secondsElapsed === 0 || this.incrementer === this.state.lastClearedIncrementer
                     ? <Button
-                            className="start-btn"
+                            className="stat-btn"
                             onClick={this
                             .handleStartClick
                             .bind(this)}>start</Button>
                     : <Button
-                        className="stop-btn"
+                        className="stopbtn"
                         onClick={this
                         .handleStopClick
                         .bind(this)}>stop</Button>)}
 
             </div>
+            </Jumbotron>
         );
     }
 }
