@@ -86,19 +86,19 @@ export default class Profile extends React.Component {
                                 <div className="tableBox">{this.state.times && this
                                         .state
                                         .times
-                                        .map(time => (
+                                        .map((time,index)=> (
 
-                                            <Table key={time._id}>
+                                            <Table key={index}>
                                                 <thead className="profileThead">
                                                     <tr>
-
+                                                        <th>#</th>
                                                         <th>Time:</th>
                                                         <th>Recorded Date:</th>
                                                     </tr>
                                                 </thead>
                                                 <tbody className="profileTbody">
                                                     <tr>
-
+                                                        <td>{time[index]}</td>
                                                         <td>{this.formatSeconds(time.recordedtime)}
                                                             (Mins:Secs)</td>
 
