@@ -43,6 +43,12 @@ export default class Profile extends React.Component {
         return minutes + ":" + seconds;
 
     };
+    deleteRecordBtn = (id) => {
+        stopwatchAPI
+            .deleteRecord(id)
+            .then(res => this.findAllUserRecords(this.props.auth.userId))
+            .catch(err => console.log(err));
+    };
 
     render() {
 
@@ -86,9 +92,9 @@ export default class Profile extends React.Component {
                                 <div className="tableBox">{this.state.times && this
                                         .state
                                         .times
-                                        .map((time,index)=> (
+                                        .map(time => (
 
-                                            <Table key={index}>
+                                            <Table key={time._id}>
                                                 <thead className="profileThead">
                                                     <tr>
                                                         <th>#</th>
@@ -98,12 +104,14 @@ export default class Profile extends React.Component {
                                                 </thead>
                                                 <tbody className="profileTbody">
                                                     <tr>
-                                                        <td>{time[index]}</td>
+                                                        <td></td>
                                                         <td>{this.formatSeconds(time.recordedtime)}
                                                             (Mins:Secs)</td>
 
                                                         <td>
-                                                            <Moment format='ll'>{time.date}</Moment><DeleteBtn id ={time._id}/></td>
+                                                            <Moment format='ll'>{time.date}</Moment>
+                                                            <span className="delete-btn" onClick={() => this.deleteRecordBtn(time._id)}>✗</span>
+                                                        </td>
                                                     </tr>
                                                 </tbody>
                                             </Table>

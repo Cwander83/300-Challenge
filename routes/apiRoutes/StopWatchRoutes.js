@@ -7,8 +7,12 @@ module.exports = function (passport) {
 		.get(stopwatchcontroller.findUserRecords)
 		.post(stopwatchcontroller.updateUserRecord);
 
+
 	router.route("/challenge/:id")
 		.post(stopwatchcontroller.updateUser);
+
+	router.route("/challenge/records")
+		.get(stopwatchcontroller.findAllChallengeRecords);
 
 	router
 		.route("/")

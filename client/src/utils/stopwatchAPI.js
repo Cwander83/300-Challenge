@@ -4,17 +4,21 @@ export default {
 
   // Gets user records
   findUserRecords: function (id) {
+    console.log(`id: ${id}`);
+    
     return axios.get("/api/records/" + id);
   },
 
   // Udates a user's record
-  updateUserRecord: function (id,userData) {
-    return axios.post("/api/records/"+ id, userData);
+  updateUserRecord: function (id, userData) {
+    console.log(`id: ${id}`);
+    console.log(`userdata: ${userData}`);
+    return axios.post("/api/records/" + id, userData);
   },
 
-// updating user to be in challenge
-  updateUser: function(id, userData){
-    return axios.post("api/records/challenge/"+id, userData)
+  // updating user to be in challenge
+  updateUser: function (id, userData) {
+    return axios.post("api/records/challenge/" + id, userData)
   },
 
   // Adding stopwatch times to user
@@ -24,12 +28,15 @@ export default {
 
   // Deletes the record
   deleteRecord: function (id) {
-    return axios.delete("/api/records/" + id);
+    return axios.delete("/api/stopwatchtimes/" + id);
   },
-  
+
   // Finding all stopwatch records for top 10
-  findAllRecords: function (){
+  findAllRecords: function () {
     return axios.get("/api/stopwatchtimes/")
+  },
+  findAllChallengeRecords: function () {
+    return axios.get("/api/stopwatchtimes/challenge/records")
   }
 
 };

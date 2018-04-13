@@ -3,9 +3,7 @@ import "./style.css";
 import "animate.css/animate.min.css";
 import ScrollAnimation from "react-animate-on-scroll";
 import {Jumbotron, Grid, Row, Col} from "react-bootstrap";
-import HallofFame from "../../components/HallofFame";
-
-
+import Fame from "../../components/Fame";
 import StopWatch from "../../components/StopWatch";
 import WorkoutInfo from "../../components/WorkoutInfo";
 
@@ -38,7 +36,7 @@ export default class Stopwatch extends React.Component {
                     </Grid>
                     <Jumbotron className="jumboHome">
 
-                        <HallofFame/>
+                        <Fame/>
                     </Jumbotron>
                 </div>
             </Jumbotron>

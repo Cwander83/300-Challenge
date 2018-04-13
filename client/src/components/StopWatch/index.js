@@ -94,6 +94,7 @@ export default class Stopwatch extends React.Component {
 
                 </div>
                 <h2>Non-Challenge</h2>
+                <h5>**(Times not added to Challenge)</h5>
             </Jumbotron>
 
         );

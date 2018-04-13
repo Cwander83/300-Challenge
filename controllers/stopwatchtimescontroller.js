@@ -66,6 +66,19 @@ module.exports = {
         db
             .StopWatchTimes
             .find()
+            .where({challenge: "true"})
+            .sort({
+                recordedtime: 1
+            })
+            .limit(20)
+            .then(dbStopWatchTimes => res.json(dbStopWatchTimes))
+            .catch(err => res.status(422).json(err));
+    },
+    findAllChallengeRecords: function (req, res) {
+        db
+            .StopWatchTimes
+            .find()
+            
             .sort({
                 recordedtime: 1
             })
@@ -74,11 +87,6 @@ module.exports = {
             .catch(err => res.status(422).json(err));
     },
 
-    // findAllRecords: function (req, res) {     db     .StopWatchTimes
-    // .find({})         .then(function (dbStopWatchTimes) {
-    // console.log(`dbStopwatchtimes ${dbStopWatchTimes}`);
-    // res.json(dbStopWatchTimes);         })         .catch(function (err) {
-    //      console.log(`err ${err}`);             res.json(err);         }); }, to
     // populate the times from a user
     populateUser: function (req, res) {
         db
@@ -91,10 +99,6 @@ module.exports = {
                 console.log(`err ${err}`);
                 res.json(doc)
             })
-        // db     .User     .findById(req.params.id)     .populate("times")
-        // .then(function (dbUser) {         console.log(`times: ${dbUser}`);
-        // res.json(dbUser);     })     .catch(function (err) {         res.json(err);
-        //   });
     },
     // to delete a time from a user's record times
     deleteRecord: function (req, res) {
