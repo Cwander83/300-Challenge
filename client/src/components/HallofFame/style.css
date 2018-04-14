@@ -13,3 +13,6 @@
     flex-grow: 1;
     flex-shrink: 4;
 }
+h1.fameH1 {
+    color: red;
+}

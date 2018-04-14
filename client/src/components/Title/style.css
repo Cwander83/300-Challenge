@@ -1,11 +1,13 @@
 .welcomeFlex {
     display: flex;
     text-align: center;
+    flex-direction: column;
     margin: 4px;
 }
 
 
 .welcome{
     font-size: 60px;
+    
 
 }

@@ -23,6 +23,11 @@ export default class Stopwatch extends React.Component {
                         </h1>
 
                     </ScrollAnimation>
+                    <ScrollAnimation
+                        
+                        animateIn='fadeInRight'
+                        delay={50}
+                        animateOut='fadeOutDown'>
                     <Grid>
                         <Row className="show-grid">
                             <Col xs={12} md={6}>
@@ -30,14 +35,27 @@ export default class Stopwatch extends React.Component {
                                 <StopWatch auth={this.props.auth}/>
                             </Col>
                             <Col xs={12} md={6}>
+                            <ScrollAnimation
+                        
+                        animateIn='fadeInLeft'
+                        delay={50}
+                        animateOut='fadeOutDown'>
                                     <WorkoutInfo />
+                                    </ScrollAnimation>
                             </Col>
                         </Row>
                     </Grid>
+                    </ScrollAnimation>
+                    <ScrollAnimation
+                        
+                        animateIn='fadeInRight'
+                        delay={50}
+                        animateOut='fadeOutDown'>
                     <Jumbotron className="jumboHome">
 
                         <Fame/>
                     </Jumbotron>
+                    </ScrollAnimation>
                 </div>
             </Jumbotron>
         )

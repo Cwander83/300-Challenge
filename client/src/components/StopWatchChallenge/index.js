@@ -81,7 +81,7 @@ export default class StopWatchChallenge extends React.Component {
                
                 {(this.state.secondsElapsed === 0 || this.incrementer === this.state.lastClearedIncrementer
                     ? <Button
-                            className="stat-btn"
+                            className="startbtn"
                             onClick={this
                             .handleStartClick
                             .bind(this)}>start</Button>

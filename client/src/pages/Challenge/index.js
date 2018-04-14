@@ -2,6 +2,8 @@ import React from "react";
 import "./style.css";
 import moment from "moment";
 //import Moment from "react-moment";
+import "animate.css/animate.min.css";
+import ScrollAnimation from "react-animate-on-scroll";
 import stopwatchAPI from "../../utils/stopwatchAPI";
 import StopWatchChallenge from "../../components/StopWatchChallenge";
 import ChallengeTitle from "../../components/ChallengeTitle";
@@ -19,8 +21,8 @@ export default class Challenge extends React.Component {
     }
     componentWillMount() {
         this.setState({
-            challengeStart: "04 13 18, 1:43:05 pm",
-            challengeEnd: "04 13 18, 1:44:05 pm",
+            challengeStart: "04 03 18, 1:43:05 pm",
+            challengeEnd: "04 14 18, 1:44:05 pm",
             date: Date.now(),
             challengeregistered: this.state.challengeregistered
         })
@@ -28,8 +30,8 @@ export default class Challenge extends React.Component {
     }
     componentDidMount() {
         this.setState({
-            challengeStart: "04 13 18, 1:43:05 pm",
-            challengeEnd: "04 13 18, 1:44:05 pm",
+            challengeStart: "04 03 18, 1:43:05 pm",
+            challengeEnd: "04 14 18, 1:44:05 pm",
             challengeregistered: this.state.challengeregistered,
             date: Date.now()
         })
@@ -54,38 +56,59 @@ export default class Challenge extends React.Component {
                 <Jumbotron className="jumboHome">
                     <div>
 
-                        {moment(this.state.challengeStart).format() <= moment(this.state.date).format()
+                        {moment(this.state.challengeStart).format() >= moment(this.state.date).format()
                             ? <ChallengeTitle/>
 
                             : !this.state.challengeregistered || !this.props.auth.challengeregistered
-                                ? <Jumbotron className="jumboHome">
-                                        <h1>REGISTRATION FOR CHALLENGE</h1>
+                                ?<ScrollAnimation
+                        
+                                animateIn='fadeInLeft'
+                                delay={50}
+                                animateOut='fadeOutDown'> <Jumbotron className="jumboHome">
+                                        <h1 className="welcomeChalH1">REGISTRATION FOR CHALLENGE</h1>
                                         <h3>REGISTRATION ENDS 04 07 18, 7:58:05 pm</h3>
                                         <Button
                                             className="registerBtn"
                                             onClick={() => this.registerDb(this.props.auth)}>Register</Button>
                                     </Jumbotron>
-                                : <Jumbotron className="jumboHome">
+                                    </ScrollAnimation>
+                                :<ScrollAnimation
+                        
+                                animateIn='fadeInRight'
+                                delay={50}
+                                animateOut='fadeOutDown'> <Jumbotron className="jumboHome">
                                     <h1>CONGRADS ON JOINING</h1>
                                     <h1>
                                         THE 300 CHALLENGE!</h1>
                                     <h3>THE CONTEST BEGINS</h3>
                                     <h3 className="registerDateH3">04 07 18, 7:58:05 pm</h3>
-                                </Jumbotron>}
+                                </Jumbotron></ScrollAnimation>}
 
                         {moment(this.state.challengeEnd).format() >= moment(this.state.date).format()
                             ? <Grid>
                                     <Row className="show-grid">
                                         <Col xs={12} md={6}>
-
+                                        <ScrollAnimation
+                        
+                        animateIn='fadeInRight'
+                        delay={50}
+                        animateOut='fadeOutDown'>
                                             <StopWatchChallenge auth={this.props.auth}/>
+                                            </ScrollAnimation>
                                         </Col>
                                         <Col xs={12} md={6}>
+                                        <ScrollAnimation
+                        
+                        animateIn='fadeInLeft'
+                        delay={50}
+                        animateOut='fadeOutDown'>
                                             <WorkoutInfo/>
+                                            </ScrollAnimation>
                                         </Col>
                                     </Row>
                                 </Grid>
-                            : <HallofFame />
+
+                            :<Jumbotron className="jumboHome"> <HallofFame /></Jumbotron>
 }
                     </div>
                 </Jumbotron>
