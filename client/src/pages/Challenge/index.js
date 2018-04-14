@@ -21,8 +21,8 @@ export default class Challenge extends React.Component {
     }
     componentWillMount() {
         this.setState({
-            challengeStart: "04 14 18, 9:24:05 am",
-            challengeEnd: "04 14 18, 9:26:05 am",
+            challengeStart: "04 14 18, 9:30:05 am",
+            challengeEnd: "04 14 18, 9:32:05 am",
             date: Date.now(),
             challengeregistered: this.state.challengeregistered
         })
@@ -30,8 +30,8 @@ export default class Challenge extends React.Component {
     }
     componentDidMount() {
         this.setState({
-            challengeStart: "04 14 18, 9:24:05 am",
-            challengeEnd: "04 14 18, 9:26:05 am",
+            challengeStart: "04 14 18, 9:30:05 am",
+            challengeEnd: "04 14 18, 9:32:05 am",
             challengeregistered: this.state.challengeregistered,
             date: Date.now()
         })
@@ -56,7 +56,7 @@ export default class Challenge extends React.Component {
                 <Jumbotron className="jumboHome">
                     <div>
 
-                        {moment(this.state.challengeStart).format() >= moment(this.state.date).format()
+                        {moment(this.state.challengeStart).format() <= moment(this.state.date).format()
                             ? <ChallengeTitle/>
 
                             : !this.state.challengeregistered || !this.props.auth.challengeregistered
@@ -66,7 +66,7 @@ export default class Challenge extends React.Component {
                                 delay={50}
                                 animateOut='fadeOutDown'> <Jumbotron className="jumboHome">
                                         <h1 className="welcomeChalH1">REGISTRATION FOR CHALLENGE</h1>
-                                        <h3>REGISTRATION ENDS 04 14 18, 9:24:05 pm</h3>
+                                        <h3>REGISTRATION ENDS 04 14 18, 9:30:05 pm</h3>
                                         <Button
                                             className="registerBtn"
                                             onClick={() => this.registerDb(this.props.auth)}>Register</Button>
@@ -84,7 +84,7 @@ export default class Challenge extends React.Component {
                                     <h3 className="registerDateH3">04 07 18, 7:58:05 pm</h3>
                                 </Jumbotron></ScrollAnimation>}
 
-                        {moment(this.state.challengeEnd).format() <= moment(this.state.date).format()
+                        {moment(this.state.challengeEnd).format() >= moment(this.state.date).format()
                             ? <Grid>
                                     <Row className="show-grid">
                                         <Col xs={12} md={6}>
