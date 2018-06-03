@@ -12,7 +12,6 @@ import Profile from "./pages/Profile";
 import StopWatch from "./pages/StopWatch";
 import Challenge from "./pages/Challenge";
 
-
 class App extends Component {
   state = {
     username: "",
@@ -133,7 +132,7 @@ class App extends Component {
             isAuthenticated: false
           }
         });
-        return <Redirect to = "/" />
+        return <Redirect to="/"/>
       })
   };
 
@@ -171,7 +170,7 @@ class App extends Component {
             path="/StopWatch"
             render=
             {()=><StopWatch auth = {this.state.auth}/>}/>
-            <Route
+          <Route
             exact
             path="/Challenge"
             render=

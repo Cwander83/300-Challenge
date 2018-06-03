@@ -6,7 +6,6 @@ import "animate.css/animate.min.css";
 import ScrollAnimation from "react-animate-on-scroll";
 import Moment from "react-moment";
 
-
 export default class Profile extends React.Component {
     state = {
         times: null,
@@ -92,7 +91,7 @@ export default class Profile extends React.Component {
                                 <div className="tableBox">{this.state.times && this
                                         .state
                                         .times
-                                        .map((time,i) => (
+                                        .map((time, i) => (
 
                                             <Table key={time._id}>
                                                 <thead className="profileThead">
@@ -104,12 +103,13 @@ export default class Profile extends React.Component {
                                                 </thead>
                                                 <tbody className="profileTbody">
                                                     <tr>
-                                                        <td>{i+1}</td>
+                                                        <td>{i + 1}</td>
                                                         <td>{this.formatSeconds(time.recordedtime)}
                                                             (Mins:Secs)</td>
 
                                                         <td>
-                                                            <Moment format='ll'>{time.date}</Moment>    <span className="delete-btn" onClick={() => this.deleteRecordBtn(time._id)}>✗</span>
+                                                            <Moment format='ll'>{time.date}</Moment>
+                                                            <span className="delete-btn" onClick={() => this.deleteRecordBtn(time._id)}>✗</span>
                                                         </td>
                                                     </tr>
                                                 </tbody>

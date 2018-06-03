@@ -6,9 +6,6 @@ import MediaBox from "../../components/Media";
 import "animate.css/animate.min.css";
 import ScrollAnimation from "react-animate-on-scroll";
 
-
-// The ...props means, spread all of the passed props onto this element That way
-// we don't have to define them all individually
 export default class YouTubePage extends React.Component {
     state = {
         videos: [],
@@ -32,8 +29,8 @@ export default class YouTubePage extends React.Component {
             .state
             .videos
             .map(video => (<MediaBox
-            _id={video._id}
-            key={video._id}
+                _id={video._id}
+                key={video._id}
                 Title={video.Title}
                 url={video.url}
                 text={video.text}
@@ -42,23 +39,21 @@ export default class YouTubePage extends React.Component {
 
     render() {
         return (
-             <div>
-           
-               <Jumbotron className="jumboHome">
-           <ScrollAnimation duration={8} animateIn='rubberBand' initallyVisible={true}>
-        <h1>
-          Workout Videos
-        </h1>
+            <div>
 
-      </ScrollAnimation>
-      <Jumbotron className="jumboVideo">
-                {this.renderVideos()}
+                <Jumbotron className="jumboHome">
+                    <ScrollAnimation duration={8} animateIn='rubberBand' initallyVisible={true}>
+                        <h1>
+                            Workout Videos
+                        </h1>
+
+                    </ScrollAnimation>
+                    <Jumbotron className="jumboVideo">
+                        {this.renderVideos()}
+                    </Jumbotron>
                 </Jumbotron>
-          </Jumbotron>      
-                </div>
-            
+            </div>
+
         )
     }
 };
-
-

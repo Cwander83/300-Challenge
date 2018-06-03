@@ -46,22 +46,21 @@ export default class StopWatchChallenge extends React.Component {
 
             secondsElapsed: this.state.secondsElapsed + 1
         }), 1000);
-        
+
     };
 
     handleStopClick() {
         clearInterval(this.incrementer);
         this.setState({userId: this.props.auth.userId, username: this.props.auth.username, lastClearedIncrementer: this.incrementer, secondsElapsed: 0, recordTime: this.state.recordTime})
-        
+
         const userId = this.props.auth.userId;
-        const username= this.props.auth.username;
-        
+        const username = this.props.auth.username;
+
         this.saveRecord(userId, username);
     };
 
-    saveRecord = (userId,username, time) => {
+    saveRecord = (userId, username, time) => {
 
-       
         time = this.state.secondsElapsed;
         const newRecord = {
             username: username,
@@ -73,25 +72,25 @@ export default class StopWatchChallenge extends React.Component {
     };
 
     render() {
-        
+
         return (
             <Jumbotron className="jumboStop">
-            <div className="stopwatch">
-                <h1 className="stopwatchTimer">{this.formatSeconds(this.state.secondsElapsed)}</h1>
-               
-                {(this.state.secondsElapsed === 0 || this.incrementer === this.state.lastClearedIncrementer
-                    ? <Button
-                            className="startbtn"
-                            onClick={this
-                            .handleStartClick
-                            .bind(this)}>start</Button>
-                    : <Button
-                        className="stopbtn"
-                        onClick={this
-                        .handleStopClick
-                        .bind(this)}>stop</Button>)}
+                <div className="stopwatch">
+                    <h1 className="stopwatchTimer">{this.formatSeconds(this.state.secondsElapsed)}</h1>
 
-            </div>
+                    {(this.state.secondsElapsed === 0 || this.incrementer === this.state.lastClearedIncrementer
+                        ? <Button
+                                className="startbtn"
+                                onClick={this
+                                .handleStartClick
+                                .bind(this)}>start</Button>
+                        : <Button
+                            className="stopbtn"
+                            onClick={this
+                            .handleStopClick
+                            .bind(this)}>stop</Button>)}
+
+                </div>
             </Jumbotron>
         );
     }

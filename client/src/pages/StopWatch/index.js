@@ -23,38 +23,26 @@ export default class Stopwatch extends React.Component {
                         </h1>
 
                     </ScrollAnimation>
-                    <ScrollAnimation
-                        
-                        animateIn='fadeInRight'
-                        delay={50}
-                        animateOut='fadeOutDown'>
-                    <Grid>
-                        <Row className="show-grid">
-                            <Col xs={12} md={6}>
+                    <ScrollAnimation animateIn='fadeInRight' delay={50} animateOut='fadeOutDown'>
+                        <Grid>
+                            <Row className="show-grid">
+                                <Col xs={12} md={6}>
 
-                                <StopWatch auth={this.props.auth}/>
-                            </Col>
-                            <Col xs={12} md={6}>
-                            <ScrollAnimation
-                        
-                        animateIn='fadeInLeft'
-                        delay={50}
-                        animateOut='fadeOutDown'>
-                                    <WorkoutInfo />
+                                    <StopWatch auth={this.props.auth}/>
+                                </Col>
+                                <Col xs={12} md={6}>
+                                    <ScrollAnimation animateIn='fadeInLeft' delay={50} animateOut='fadeOutDown'>
+                                        <WorkoutInfo/>
                                     </ScrollAnimation>
-                            </Col>
-                        </Row>
-                    </Grid>
+                                </Col>
+                            </Row>
+                        </Grid>
                     </ScrollAnimation>
-                    <ScrollAnimation
-                        
-                        animateIn='fadeInRight'
-                        delay={50}
-                        animateOut='fadeOutDown'>
-                    <Jumbotron className="jumboHome">
+                    <ScrollAnimation animateIn='fadeInRight' delay={50} animateOut='fadeOutDown'>
+                        <Jumbotron className="jumboHome">
 
-                        <Fame/>
-                    </Jumbotron>
+                            <Fame/>
+                        </Jumbotron>
                     </ScrollAnimation>
                 </div>
             </Jumbotron>

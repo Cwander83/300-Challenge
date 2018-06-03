@@ -53,10 +53,10 @@ export default class Stopwatch extends React.Component {
     handleStopClick() {
         clearInterval(this.incrementer);
         this.setState({userId: this.props.auth.userId, username: this.props.auth.username, lastClearedIncrementer: this.incrementer, secondsElapsed: 0, recordTime: this.state.recordTime})
-        
+
         const userId = this.props.auth.userId;
         const username = this.props.auth.username;
-        
+
         this.saveRecord(userId, username);
     };
 
@@ -76,7 +76,7 @@ export default class Stopwatch extends React.Component {
 
         return (
             <Jumbotron className="jumboStop">
-            
+
                 <div className="stopwatch">
                     <h2 className="stopwatchTimer">{this.formatSeconds(this.state.secondsElapsed)}</h2>
 

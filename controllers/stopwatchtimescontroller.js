@@ -23,7 +23,11 @@ module.exports = {
             .User
             .findByIdAndUpdate({
                 _id: req.params.id
-            }, {$set:{challengeregistered: true}})
+            }, {
+                $set: {
+                    challengeregistered: true
+                }
+            })
             .then(function (dbUser) {
                 console.log(`dbUser ${dbUser}`)
                 console.log(`req.body ${req.body}`)
@@ -66,7 +70,9 @@ module.exports = {
         db
             .StopWatchTimes
             .find()
-            .where({challenge: "true"})
+            .where({
+                challenge: "true"
+            })
             .sort({
                 recordedtime: 1
             })
@@ -78,7 +84,7 @@ module.exports = {
         db
             .StopWatchTimes
             .find()
-            
+
             .sort({
                 recordedtime: 1
             })

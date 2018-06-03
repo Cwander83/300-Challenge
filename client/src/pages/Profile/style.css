@@ -29,7 +29,8 @@
 .profileTbody {
     font-size: 28px;
 }
-.tableBox{
+
+.tableBox {
     margin-left: 5px;
     margin-right: 5px;
     display: flex;
