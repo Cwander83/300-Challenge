@@ -1,7 +1,7 @@
-import React, {Component} from 'react';
-import './App.css';
-import {BrowserRouter as Router, Route, Redirect} from 'react-router-dom';
-import axios from 'axios';
+import React, { Component } from "react";
+import "./App.css";
+import { BrowserRouter as Router, Route, Redirect } from "react-router-dom";
+import axios from "axios";
 import CoverImage from "./components/CoverImage";
 import NavBar from "./components/NavBar";
 import SignIn from "./pages/SignIn";
@@ -35,11 +35,21 @@ class App extends Component {
     }
   };
 
-  componentWillMount() {
-    axios
-      .get("/auth/isAuthenticated")
-      .then((result) => {
-        const {
+  componentDidMount() {
+    axios.get("/auth/isAuthenticated").then(result => {
+      const {
+        userId,
+        isAuthenticated,
+        username,
+        firstname,
+        lastname,
+        email,
+        state,
+        country,
+        challengeregistered
+      } = result.data;
+      this.setState({
+        auth: {
           userId,
           isAuthenticated,
           username,
@@ -49,30 +59,18 @@ class App extends Component {
           state,
           country,
           challengeregistered
-        } = result.data
-        this.setState({
-          auth: {
-            userId,
-            isAuthenticated,
-            username,
-            firstname,
-            lastname,
-            email,
-            state,
-            country,
-            challengeregistered
-          }
-        });
+        }
       });
+    });
   }
 
-  handleChange = (event) => {
-    const {name, value} = event.target;
+  handleChange = event => {
+    const { name, value } = event.target;
     // Set the state for the appropriate input field
-    this.setState({[name]: value});
-  }
+    this.setState({ [name]: value });
+  };
 
-  handleSubmit = (event) => {
+  handleSubmit = event => {
     event.preventDefault();
 
     //call a sign In function
@@ -86,13 +84,23 @@ class App extends Component {
       country: this.state.country,
       challengeregistered: this.state.challengeregistered
     };
-    this.setState({username: "", password: ""});
-    const {name} = event.target;
-    axios
-      .post(name, newUser)
-      .then((data) => {
-        if (data.data.isAuthenticated) {
-          const {
+    this.setState({ username: "", password: "" });
+    const { name } = event.target;
+    axios.post(name, newUser).then(data => {
+      if (data.data.isAuthenticated) {
+        const {
+          userId,
+          isAuthenticated,
+          username,
+          firstname,
+          lastname,
+          email,
+          state,
+          country,
+          challengeregistered
+        } = data.data;
+        this.setState({
+          auth: {
             userId,
             isAuthenticated,
             username,
@@ -102,83 +110,126 @@ class App extends Component {
             state,
             country,
             challengeregistered
-          } = data.data;
-          this.setState({
-            auth: {
-              userId,
-              isAuthenticated,
-              username,
-              firstname,
-              lastname,
-              email,
-              state,
-              country,
-              challengeregistered
-            }
-          });
-        }
-      });
-  }
-
-  handleLogout = (event) => {
-    event.preventDefault();
-    axios
-      .get("/auth/logout")
-      .then((result) => {
-        this.setState({
-          auth: {
-            userId: "",
-            username: "",
-            isAuthenticated: false
           }
         });
-        return <Redirect to="/"/>
-      })
+      }
+    });
+  };
+
+  handleLogout = event => {
+    event.preventDefault();
+    axios.get("/auth/logout").then(result => {
+      this.setState({
+        auth: {
+          userId: "",
+          username: "",
+          isAuthenticated: false
+        }
+      });
+      return <Redirect to="/" />;
+    });
   };
 
   render() {
     const loggedIn = this.state.auth.isAuthenticated;
     return (
-
       <Router>
         <div>
-          <CoverImage/>
-          <NavBar isAuthenticated={loggedIn} handleLogout={this.handleLogout}/>
+          <CoverImage />
+          <NavBar isAuthenticated={loggedIn} handleLogout={this.handleLogout} />
           <Route
             exact
             path="/"
-            render=
-            {()=> { if(loggedIn) { return <Redirect to = "/Home" /> } else{ return <SignIn handleChange= {this.handleChange} handleSubmit = {this.handleSubmit} lastname = {this.state.lastname} firstname = {this.state.firstname} state = {this.state.state} country={this.state.country} email = {this.state.email} password = {this.state.password} /> } }}/>
+            render={() => {
+              if (loggedIn) {
+                return <Redirect to="/Home" />;
+              } else {
+                return (
+                  <SignIn
+                    handleChange={this.handleChange}
+                    handleSubmit={this.handleSubmit}
+                    lastname={this.state.lastname}
+                    firstname={this.state.firstname}
+                    state={this.state.state}
+                    country={this.state.country}
+                    email={this.state.email}
+                    password={this.state.password}
+                  />
+                );
+              }
+            }}
+          />
           <Route
             exact
             path="/signup"
-            render=
-            {()=> { if(loggedIn) { return <Redirect to = "/Home" /> } else{ return <SignUp handleChange= {this.handleChange} handleSubmit = {this.handleSubmit} lastname = {this.state.lastname} firstname = {this.state.firstname} state = {this.state.state} country={this.state.country} email = {this.state.email} password = {this.state.password} /> } }}/>
+            render={() => {
+              if (loggedIn) {
+                return <Redirect to="/Home" />;
+              } else {
+                return (
+                  <SignUp
+                    handleChange={this.handleChange}
+                    handleSubmit={this.handleSubmit}
+                    lastname={this.state.lastname}
+                    firstname={this.state.firstname}
+                    state={this.state.state}
+                    country={this.state.country}
+                    email={this.state.email}
+                    password={this.state.password}
+                  />
+                );
+              }
+            }}
+          />
           <Route
             exact
             path="/Home"
-            render=
-            {()=> { if(!loggedIn) { return <Redirect to = "/" /> } else { return <Home handleLogout = {this.handleLogout} auth = { this.state.auth }/> } } }/>
+            render={() => {
+              if (!loggedIn) {
+                return <Redirect to="/" />;
+              } else {
+                return (
+                  <Home
+                    handleLogout={this.handleLogout}
+                    auth={this.state.auth}
+                  />
+                );
+              }
+            }}
+          />
 
           <Route
             exact
             path="/Profile"
-            render=
-            {()=><Profile auth= {this.state.auth} lastname = {this.state.lastname} firstname = {this.state.firstname} state = {this.state.state} country={this.state.country} email = {this.state.email}/>}/>
+            render={() => (
+              <Profile
+                auth={this.state.auth}
+                lastname={this.state.lastname}
+                firstname={this.state.firstname}
+                state={this.state.state}
+                country={this.state.country}
+                email={this.state.email}
+              />
+            )}
+          />
           <Route
             exact
             path="/StopWatch"
-            render=
-            {()=><StopWatch auth = {this.state.auth}/>}/>
+            render={() => <StopWatch auth={this.state.auth} />}
+          />
           <Route
             exact
             path="/Challenge"
-            render=
-            {()=><Challenge handleSubmit = {this.handleSubmit} auth = {this.state.auth}/>}/>
-          <Route exact path="/YouTubePage" render= {()=><YouTubePage/>}/>
+            render={() => (
+              <Challenge
+                handleSubmit={this.handleSubmit}
+                auth={this.state.auth}
+              />
+            )}
+          />
+          <Route exact path="/YouTubePage" render={() => <YouTubePage />} />
         </div>
       </Router>
-
     );
   }
 }

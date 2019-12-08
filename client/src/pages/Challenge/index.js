@@ -18,14 +18,7 @@ export default class Challenge extends React.Component {
       date: "",
       challengeregistered: false
    };
-   componentWillMount() {
-      this.setState({
-         challengeStart: "04 14 18, 9:30:05 am",
-         challengeEnd: "04 14 18, 9:32:05 am",
-         date: Date.now(),
-         challengeregistered: this.state.challengeregistered
-      });
-   }
+   
    componentDidMount() {
       this.setState({
          challengeStart: "04 14 18, 9:30:05 am",
